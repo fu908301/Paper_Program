@@ -66,7 +66,11 @@ public class Node {
     public void addChild(char c,Node child){
         children.put(c + "", child);
     }
-
+    public void getValue(){
+        for (Object key : children.keySet()) {
+            System.out.println(key + " : " + children.get(key));
+        }
+    }
     public void removeChild(char c){
         children.remove(c + "");
     }
