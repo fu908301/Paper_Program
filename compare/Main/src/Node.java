@@ -3,15 +3,23 @@ public class Node {
     private char c; //字母串中的一個字元
     private byte type; //node 的類型
     private int count; //計算從root到這個node出現次數
+    private int totalCount;//計算該點是第幾個insert
 
     private Map<String, Node> children;
     public Node(){
         this.c = ' ';
         this.type = -1;
         this.count = 0;
+        this.totalCount = 1;
         this.children = null;
     }
 
+    public void setTotalCount(int input){
+        this.totalCount = input;
+    }
+    public int getTotalCount(){
+        return this.totalCount;
+    }
     public int getCount(){
         return  count;
     }

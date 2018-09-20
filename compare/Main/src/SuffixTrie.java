@@ -19,22 +19,25 @@ public class SuffixTrie implements Trie{
     @Override
     public void build(String input){
         StringBuffer stringBuffer = new StringBuffer(input);
+        int TotalCount = 1;
         while(stringBuffer.length() > 0){
-            insert(stringBuffer.toString() + '$');
+            TotalCount = insert(stringBuffer.toString() + '$', TotalCount);
             symbolAccount++;
             stringBuffer.deleteCharAt(0);
         }
     }
 
     @Override
-    public boolean insert(String word) {
+    public int insert(String word, int input) {
         Node currentNode = root;
         char c;
         for (int i = 0; i < word.length(); i++) {
+            input++;
             c = word.charAt(i);
             if (c == '$') {
-                if (currentNode.contain(c))
+                if (currentNode.contain(c)) {
                     currentNode.increseCount();
+                }
                 else {
                     Node leaf = new LeafNode();
                     currentNode.addChild('$', leaf);
@@ -49,10 +52,11 @@ public class SuffixTrie implements Trie{
                     currentNode.addChild(c, branch);
                     currentNode.increseCount();
                     currentNode = branch;
+                    currentNode.setTotalCount(input);
                 }
             }
         }
-        return true;
+        return input;
     }
 
     @Override
@@ -103,6 +107,16 @@ public class SuffixTrie implements Trie{
             }
         }
         return currNode.getCount();
+    }
+
+    public void run_all_tree(Node currentNode){
+        if(currentNode.getChildren() != null) {
+            for (Object key : currentNode.getChildren().keySet()) {
+                Node nextNode = currentNode.getChildren().get(key);
+                System.out.println("Node: " + currentNode.getTotalCount()  + " edge key " + key);
+                run_all_tree(nextNode);
+            }
+        }
     }
 
     @Override

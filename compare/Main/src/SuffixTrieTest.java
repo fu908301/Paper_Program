@@ -12,6 +12,7 @@ public class SuffixTrieTest {
         System.out.println("a 出現的次數 " + trie.getOccurences("a"));
         System.out.println("Root is " );
         trie.getRoot().getValue();
+        trie.run_all_tree(trie.getRoot());
         input.close();
     }
 }

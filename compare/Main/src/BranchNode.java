@@ -4,6 +4,7 @@ public class BranchNode extends Node{
         super.setC(c);
         super.setType((byte) 1);
         super.setCount(0);
+        super.setTotalCount(1);
         super.setChildren(new HashMap<String, Node>());
     }
 }
