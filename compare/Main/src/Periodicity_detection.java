@@ -1,11 +1,12 @@
-import java.util.ArrayList;
+import java.util.*;
 public class Periodicity_detection {
     private int[] occ;
     private int size;
     private int threshold;
     private int length;
     private ArrayList<Integer> V;
-    private ArrayList<Integer> OP;
+    private ArrayList<occ_period> OP;
+
     Periodicity_detection(){
     }
     Periodicity_detection(int occ[],int size, int threshold, int length){
@@ -22,6 +23,7 @@ public class Periodicity_detection {
 
     public void algorithm(){
         int st, sigma, period, PP, support;
+        occ_period tempOP;
         for (int i = 1; i <= size - 1; i++){
             st = occ[i - 1];
             for(int j = i; j <= size - 1; j++){
@@ -38,16 +40,34 @@ public class Periodicity_detection {
                 PP = (length - st + 1) / period;
                 support = V.size() / PP;
                 if(support >= threshold){
-                    OP = union(OP, V);
+                    tempOP = new occ_period();
+                    tempOP.setPeriod(period);
+                    tempOP.setOcc(V);
+                    check_add(period,tempOP);
                 }
             }
         }
     }
     public void print(){
+       for(int i = 0; i < OP.size(); i++){
+           OP.get(i).print();
+       }
+    }
+    private void check_add(int period, occ_period tempOP){
+        boolean check = true;
+        ArrayList<Integer> temp = new ArrayList<>();
         for(int i = 0; i < OP.size(); i++){
-            System.out.println(OP.get(i));
+            if(OP.get(i).containPeriod(period)){
+                check = false;
+                temp = union(OP.get(i).getOcc(), tempOP.getOcc());
+                OP.get(i).setOcc(temp);
+            }
+        }
+        if(check){
+            OP.add(tempOP);
         }
     }
+
     private ArrayList<Integer> union(ArrayList<Integer> input1, int input2){
         ArrayList<Integer> result = new ArrayList<>();
         result.addAll(input1);
@@ -59,6 +79,7 @@ public class Periodicity_detection {
     private ArrayList<Integer> union(ArrayList<Integer> input1, ArrayList<Integer> input2){
         ArrayList<Integer> result = new ArrayList<>();
         result.addAll(input1);
+
         for(int i = 0; i < input2.size(); i++){
             if(!result.contains(input2.get(i))){
                 result.add(input2.get(i));
@@ -66,4 +87,5 @@ public class Periodicity_detection {
         }
         return result;
     }
+
 }
