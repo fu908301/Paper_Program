@@ -6,7 +6,7 @@ public interface Trie {
     public boolean search(String word);
 
     //Insert a pattern into the tree
-    public int insert(String word, int input);
+    public int insert(String word, int input, String real_word);
 
     //Delete a pattern from the tree
     public boolean delete(String word);

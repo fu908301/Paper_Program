@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class SuffixTrieTest {
-    SuffixTrie trie = null;
+    private SuffixTrie trie = null;
     public void test(){
         this.trie = new SuffixTrie();
 

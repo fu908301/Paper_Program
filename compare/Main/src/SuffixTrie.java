@@ -21,14 +21,14 @@ public class SuffixTrie implements Trie{
         StringBuffer stringBuffer = new StringBuffer(input);
         int TotalCount = 1;
         while(stringBuffer.length() > 0){
-            TotalCount = insert(stringBuffer.toString() + '$', TotalCount);
+            TotalCount = insert(stringBuffer.toString() + '$', TotalCount, input);
             symbolAccount++;
             stringBuffer.deleteCharAt(0);
         }
     }
 
     @Override
-    public int insert(String word, int input) {
+    public int insert(String word, int input, String real_word) {
         Node currentNode = root;
         char c;
         for (int i = 0; i < word.length(); i++) {
@@ -49,6 +49,22 @@ public class SuffixTrie implements Trie{
                     currentNode = currentNode.next(c);
                 } else {
                     Node branch = new BranchNode(c);
+                    set_Occ(c, branch, real_word);
+                    if(c == 'a'){
+                        branch.setWeight(0.8);
+                    }
+                    else if(c == 'b'){
+                        branch.setWeight(0.6);
+                    }
+                    else if(c == 'c'){
+                        branch.setWeight(0.7);
+                    }
+                    else if(c == 'd'){
+                        branch.setWeight(0.5);
+                    }
+                    else if(c == '$'){
+                        branch.setWeight(0.0);
+                    }
                     currentNode.addChild(c, branch);
                     currentNode.increseCount();
                     currentNode = branch;
@@ -80,6 +96,15 @@ public class SuffixTrie implements Trie{
         }
         return false;
     }
+
+    private void set_Occ(char c, Node input, String word){
+        for(int i = 0; i < word.length(); i++){
+            if(c == word.charAt(i)){
+                input.setOcc_vec(i);
+            }
+        }
+    }
+
 
     public boolean searchString(String string) {
         Node currNode = root;
@@ -113,7 +138,10 @@ public class SuffixTrie implements Trie{
         if(currentNode.getChildren() != null) {
             for (Object key : currentNode.getChildren().keySet()) {
                 Node nextNode = currentNode.getChildren().get(key);
-                System.out.println("Node: " + currentNode.getTotalCount()  + " edge key " + key);
+                System.out.println("Node: " + currentNode.getTotalCount()  + " edge key " + key + " weight : " + nextNode.getWeight());
+                for(int i = 0; i < nextNode.getOcc_vec().size(); i++){
+                    System.out.println("OCC:" + nextNode.getOcc_vec().get(i));
+                }
                 run_all_tree(nextNode);
             }
         }

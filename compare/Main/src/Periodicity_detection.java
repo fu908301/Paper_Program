@@ -1,6 +1,6 @@
 import java.util.*;
 public class Periodicity_detection {
-    private int[] occ;
+    private ArrayList<Integer> occ;
     private int size;
     private int threshold;
     private int length;
@@ -9,12 +9,9 @@ public class Periodicity_detection {
 
     Periodicity_detection(){
     }
-    Periodicity_detection(int occ[],int size, int threshold, int length){
+    Periodicity_detection(ArrayList<Integer> occ,int size, int threshold, int length){
         this.size = size;
-        this.occ = new int [this.size];
-        for(int i = 0; i < size; i++){
-            this.occ[i] = occ[i];
-        }
+        this.occ = occ;
         this.threshold = threshold;
         this.length = length;
         V = new ArrayList<>();
@@ -25,16 +22,16 @@ public class Periodicity_detection {
         int st, sigma, period, PP, support;
         occ_period tempOP;
         for (int i = 1; i <= size - 1; i++){
-            st = occ[i - 1];
+            st = occ.get(i - 1);
             for(int j = i; j <= size - 1; j++){
-                sigma = occ[j];
+                sigma = occ.get(j);
                 period = sigma - st;
                 V.clear();
                 V.add(st);
                 V.add(sigma);
                 for(int m = j + 1; m <= size - 1; m++){
-                    if((occ[m] - st) % period == 0){
-                        V = union(V, occ[m]);
+                    if((occ.get(m) - st) % period == 0){
+                        V = union(V, occ.get(m));
                     }
                 }
                 PP = (length - st + 1) / period;
@@ -52,6 +49,10 @@ public class Periodicity_detection {
        for(int i = 0; i < OP.size(); i++){
            OP.get(i).print();
        }
+    }
+    public ArrayList <occ_period> getOP(){
+        algorithm();
+        return OP;
     }
     private void check_add(int period, occ_period tempOP){
         boolean check = true;

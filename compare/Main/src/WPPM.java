@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class WPPM {
-
+    private SuffixTrie trie = null;
     public WPPM(){
     }
     public void WPPM_run(){
@@ -11,7 +11,21 @@ public class WPPM {
         ArrayList<Character> input_DB = stringToArrayList(input_S);
         ArrayList<Character> unique = getUnique(input_DB);
         HashMap<Character, Float> weight = setWeight(unique);
-        printTest(input_DB, unique, weight);
+        //printTest(input_DB, unique, weight);
+        trie = new SuffixTrie();
+        trie.build(input_S);
+        Node root = trie.getRoot();
+        trie.run_all_tree(root);
+        for (Object key : root.getChildren().keySet()){
+            Node nextNode = root.getChildren().get(key);
+            double test = getMaxWeight(nextNode);
+            Periodicity_detection tempPD = new Periodicity_detection(nextNode.getOcc_vec(), nextNode.getOcc_vec().size(), 1, input_S.length());
+            ArrayList<occ_period> ST1 = tempPD.getOP();
+            System.out.println(key);
+            for(int i = 0; i < ST1.size(); i++){
+                ST1.get(i).print();
+            }
+        }
     }
 
     private String input(){
@@ -72,5 +86,22 @@ public class WPPM {
         for(Object key : input3.keySet()){
             System.out.println(key + ":" + input3.get(key));
         }
+    }
+
+    private double getMaxWeight(Node input){
+        double currentW = input.getWeight();
+        if(input.getChildren() != null) {
+            for (Object key : input.getChildren().keySet()) {
+                Node nextNode = input.getChildren().get(key);
+                double nextW = getMaxWeight(nextNode);
+                if(currentW > nextW){
+                    return currentW;
+                }
+                else{
+                    return nextW;
+                }
+            }
+        }
+      return currentW;
     }
 }
