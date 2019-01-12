@@ -19,17 +19,33 @@ public class Periodicity_detection {
     }
 
     public void algorithm(){
-        int st, sigma, period, PP, support;
+        int st, sigma, period, PP, support,s_loop = 0, t_loop = 0;
         occ_period tempOP;
         for (int i = 1; i <= size - 1; i++){
             st = occ.get(i - 1);
             for(int j = i; j <= size - 1; j++){
+                s_loop++;
                 sigma = occ.get(j);
                 period = sigma - st;
+                if(threshold*(length-st+1)/period > size)
+                    break;
+                if(OP.size() == 0){
+                    System.out.println("Continue");
+                }
+                else{
+                    for(int temp = 0; temp < OP.size(); temp++){
+                        if(period == OP.get(temp).getPeriod()){
+                            if(OP.get(temp).getOcc().contains(st)){
+                                break;
+                            }
+                        }
+                    }
+                }
                 V.clear();
                 V.add(st);
                 V.add(sigma);
                 for(int m = j + 1; m <= size - 1; m++){
+                    t_loop++;
                     if((occ.get(m) - st) % period == 0){
                         V = union(V, occ.get(m));
                     }
@@ -44,6 +60,8 @@ public class Periodicity_detection {
                 }
             }
         }
+        System.out.println("Second loop " + s_loop);
+        System.out.println("Third loop " + t_loop);
     }
     public void print(){
        for(int i = 0; i < OP.size(); i++){

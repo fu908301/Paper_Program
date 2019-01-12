@@ -7,6 +7,7 @@ public class WPPM {
     public WPPM(){
     }
     public void WPPM_run(){
+        int threshold = 2;
         String input_S = input();
         ArrayList<Character> input_DB = stringToArrayList(input_S);
         ArrayList<Character> unique = getUnique(input_DB);
@@ -21,10 +22,15 @@ public class WPPM {
             double test = getMaxWeight(nextNode);
             Periodicity_detection tempPD = new Periodicity_detection(nextNode.getOcc_vec(), nextNode.getOcc_vec().size(), 1, input_S.length());
             ArrayList<occ_period> ST1 = tempPD.getOP();
-            System.out.println(key);
+            if(ST1.size() * test >= threshold){
+                HashMap<Character, ArrayList> C = new HashMap<>();
+                C.put(nextNode.getC(),ST1);
+
+            }
+            /*System.out.println(key);
             for(int i = 0; i < ST1.size(); i++){
                 ST1.get(i).print();
-            }
+            }*/
         }
     }
 
