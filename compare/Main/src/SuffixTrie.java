@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.util.ArrayList;
 
 public class SuffixTrie implements Trie{
     private Node root = null;
@@ -29,27 +30,34 @@ public class SuffixTrie implements Trie{
 
     @Override
     public int insert(String word, int input, String real_word) {
+        int occ = real_word.length() - word.length() + 1;
         Node currentNode = root;
         char c;
         for (int i = 0; i < word.length(); i++) {
+            int nextDepth = currentNode.getDepth() + 1;
             input++;
             c = word.charAt(i);
             if (c == '$') {
                 if (currentNode.contain(c)) {
-                    currentNode.increseCount();
+                    currentNode.increaseCount();
                 }
                 else {
                     Node leaf = new LeafNode();
                     currentNode.addChild('$', leaf);
-                    currentNode.increseCount();
+                    currentNode.increaseCount();
                 }
             } else {    //未到序列末尾，就增加枝结点
                 if (currentNode.contain(c)) {
-                    currentNode.increseCount();
+                    currentNode.increaseCount();
+                    currentNode.setOcc_vec(occ);
+                    System.out.println("2 " + c + " : " + occ);
                     currentNode = currentNode.next(c);
                 } else {
+                    if(!currentNode.getOcc_vec().contains(occ)){
+                        currentNode.setOcc_vec(occ);
+                    }
+                    System.out.println("3 " + c + " : " + occ);
                     Node branch = new BranchNode(c);
-                    set_Occ(c, branch, real_word);
                     if(c == 'a'){
                         branch.setWeight(0.8);
                     }
@@ -66,9 +74,11 @@ public class SuffixTrie implements Trie{
                         branch.setWeight(0.0);
                     }
                     currentNode.addChild(c, branch);
-                    currentNode.increseCount();
                     currentNode = branch;
+                    currentNode.increaseCount();
                     currentNode.setTotalCount(input);
+                    currentNode.setDepth(nextDepth);
+                    currentNode.setOcc_vec(occ);
                 }
             }
         }
@@ -97,14 +107,20 @@ public class SuffixTrie implements Trie{
         return false;
     }
 
-    private void set_Occ(char c, Node input, String word){
-        for(int i = 0; i < word.length(); i++){
-            if(c == word.charAt(i)){
-                input.setOcc_vec(i);
-            }
-        }
-    }
 
+    public ArrayList<Integer> len_vec(Node currNode, ArrayList<Integer> input){
+        if(currNode.getChildren() != null){
+                for (Object key : currNode.getChildren().keySet()) {
+                    Node nextNode = currNode.getChildren().get(key);
+                    if(nextNode.getType() == (byte)1){
+                        System.out.println("Count: " + currNode.getDepth());
+                        input.add(currNode.getDepth());
+                    }
+                    len_vec(nextNode, input);
+                }
+            }
+        return input;
+    }
 
     public boolean searchString(String string) {
         Node currNode = root;
@@ -145,6 +161,7 @@ public class SuffixTrie implements Trie{
                 run_all_tree(nextNode);
             }
         }
+
     }
 
     @Override

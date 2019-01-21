@@ -6,6 +6,7 @@ public class Node {
     private int count; //計算從root到這個node出現次數
     private int totalCount;//計算該點是第幾個insert
     private double weight;//該Node之Weight
+    private int depth;
     private Map<String, Node> children;
     private ArrayList <Integer> occ_vec;
     public Node(){
@@ -14,6 +15,7 @@ public class Node {
         this.count = 0;
         this.totalCount = 1;
         this.children = null;
+        this.depth = 0;
         occ_vec = new ArrayList<>();
     }
 
@@ -32,15 +34,15 @@ public class Node {
     public int getCount(){
         return  count;
     }
-
     public void setCount(int count){
         this.count = count;
     }
-
+    public void setDepth(int depth){ this.depth = depth;}
+    public int getDepth(){return this.depth;}
     public void setWeight(double weight){this.weight = weight;}
     public double getWeight(){return weight;}
 
-    public void increseCount(){
+    public void increaseCount(){
         this.count++;
     }
 

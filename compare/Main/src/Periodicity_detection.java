@@ -20,11 +20,12 @@ public class Periodicity_detection {
 
     public void algorithm(){
         int st, sigma, period, PP, support,s_loop = 0, t_loop = 0;
+        boolean _break = false;
         occ_period tempOP;
         for (int i = 1; i <= size - 1; i++){
             st = occ.get(i - 1);
             for(int j = i; j <= size - 1; j++){
-                s_loop++;
+                _break = false;
                 sigma = occ.get(j);
                 period = sigma - st;
                 if(threshold*(length-st+1)/period > size)
@@ -36,11 +37,16 @@ public class Periodicity_detection {
                     for(int temp = 0; temp < OP.size(); temp++){
                         if(period == OP.get(temp).getPeriod()){
                             if(OP.get(temp).getOcc().contains(st)){
-                                break;
+                               _break = true;
+                               break;
                             }
                         }
                     }
                 }
+                if(_break) {
+                    break;
+                }
+                s_loop++;
                 V.clear();
                 V.add(st);
                 V.add(sigma);

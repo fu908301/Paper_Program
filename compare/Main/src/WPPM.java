@@ -1,4 +1,6 @@
+import javax.print.attribute.standard.NumberOfDocuments;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -8,9 +10,13 @@ public class WPPM {
     }
     public void WPPM_run(){
         int threshold = 2;
+        int LadderFactor;
         String input_S = input();
         ArrayList<Character> input_DB = stringToArrayList(input_S);
         ArrayList<Character> unique = getUnique(input_DB);
+        ArrayList<Integer> len_vec = new ArrayList<>();
+        ArrayList<Node> CN = new ArrayList<>();
+        ArrayList<Node> N = new ArrayList<>();
         HashMap<Character, Float> weight = setWeight(unique);
         //printTest(input_DB, unique, weight);
         trie = new SuffixTrie();
@@ -25,7 +31,20 @@ public class WPPM {
             if(ST1.size() * test >= threshold){
                 HashMap<Character, ArrayList> C = new HashMap<>();
                 C.put(nextNode.getC(),ST1);
+                len_vec = trie.len_vec(nextNode, len_vec);
+                LadderFactor = _LadderFactor(len_vec);
+                CN = union(CN, nextNode);
+                while(LadderFactor > 0){
+                    N.clear();
+                    for(int i = 0; i < CN.size(); i++){
+                        Node thisNode = CN.get(i);
+                        for (Object key2 : thisNode.getChildren().keySet()){
+                            Node thisNode2 = thisNode.getChildren().get(key2);
 
+                        }
+                    }
+                    LadderFactor--;
+                }
             }
             /*System.out.println(key);
             for(int i = 0; i < ST1.size(); i++){
@@ -33,7 +52,33 @@ public class WPPM {
             }*/
         }
     }
-
+    private ArrayList<Node> union(ArrayList<Node> inputN, Node inputP){
+        boolean in = false;
+        for(int i = 0; i < inputN.size(); i++){
+            if(inputN.get(i).getC() == inputP.getC()){
+                in = true;
+                break;
+            }
+        }
+        if(!in){
+            inputN.add(inputP);
+        }
+        return inputN;
+    }
+    private int _LadderFactor(ArrayList<Integer> input){
+        int _return = 0;
+        int loc;
+        Collections.sort(input);
+        if(input.size() % 2 == 0){
+            loc = input.size() / 2;
+            _return = input.get(loc);
+        }
+        else if(input.size() % 2 != 0){
+            loc = input.size() / 2 - 1;
+            _return = input.get(loc);
+        }
+        return _return;
+    }
     private String input(){
         String input_S;
         Scanner scanner = new Scanner(System.in);
