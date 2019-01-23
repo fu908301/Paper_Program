@@ -18,7 +18,7 @@ public class Node {
         this.depth = 0;
         occ_vec = new ArrayList<>();
     }
-
+    public void newOcc(){occ_vec = new ArrayList<>();}
     public void setOcc_vec(int input){
         occ_vec.add(input);
     }

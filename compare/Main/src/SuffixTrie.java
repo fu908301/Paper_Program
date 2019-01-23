@@ -31,7 +31,7 @@ public class SuffixTrie implements Trie{
     @Override
     public int insert(String word, int input, String real_word) {
         int occ = real_word.length() - word.length() + 1;
-        Node currentNode = root;
+        Node currentNode = root;//bug的點
         char c;
         for (int i = 0; i < word.length(); i++) {
             int nextDepth = currentNode.getDepth() + 1;
@@ -49,14 +49,12 @@ public class SuffixTrie implements Trie{
             } else {    //未到序列末尾，就增加枝结点
                 if (currentNode.contain(c)) {
                     currentNode.increaseCount();
-                    currentNode.setOcc_vec(occ);
-                    System.out.println("2 " + c + " : " + occ);
                     currentNode = currentNode.next(c);
+                    currentNode.setOcc_vec(occ);
                 } else {
-                    if(!currentNode.getOcc_vec().contains(occ)){
+                    /*if(!currentNode.getOcc_vec().contains(occ)){
                         currentNode.setOcc_vec(occ);
-                    }
-                    System.out.println("3 " + c + " : " + occ);
+                    }*/
                     Node branch = new BranchNode(c);
                     if(c == 'a'){
                         branch.setWeight(0.8);
@@ -69,9 +67,6 @@ public class SuffixTrie implements Trie{
                     }
                     else if(c == 'd'){
                         branch.setWeight(0.5);
-                    }
-                    else if(c == '$'){
-                        branch.setWeight(0.0);
                     }
                     currentNode.addChild(c, branch);
                     currentNode = branch;

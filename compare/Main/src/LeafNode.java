@@ -6,5 +6,6 @@ public class LeafNode  extends Node{
         super.setWeight(0);
         super.setDepth(0);
         super.setType((byte) 1);
+        super.newOcc();
     }
 }

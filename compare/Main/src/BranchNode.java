@@ -8,5 +8,6 @@ public class BranchNode extends Node{
         super.setWeight(0);
         super.setDepth(0);
         super.setChildren(new HashMap<String, Node>());
+        super.newOcc();
     }
 }

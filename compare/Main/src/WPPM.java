@@ -17,7 +17,9 @@ public class WPPM {
         ArrayList<Integer> len_vec = new ArrayList<>();
         ArrayList<Node> CN = new ArrayList<>();
         ArrayList<Node> N = new ArrayList<>();
+        HashMap<Character, ArrayList> C = new HashMap<>();
         HashMap<Character, Float> weight = setWeight(unique);
+        Node_Occ PT1 = new Node_Occ();
         //printTest(input_DB, unique, weight);
         trie = new SuffixTrie();
         trie.build(input_S);
@@ -29,7 +31,7 @@ public class WPPM {
             Periodicity_detection tempPD = new Periodicity_detection(nextNode.getOcc_vec(), nextNode.getOcc_vec().size(), 1, input_S.length());
             ArrayList<occ_period> ST1 = tempPD.getOP();
             if(ST1.size() * test >= threshold){
-                HashMap<Character, ArrayList> C = new HashMap<>();
+                C.clear();
                 C.put(nextNode.getC(),ST1);
                 len_vec = trie.len_vec(nextNode, len_vec);
                 LadderFactor = _LadderFactor(len_vec);
@@ -40,7 +42,9 @@ public class WPPM {
                         Node thisNode = CN.get(i);
                         for (Object key2 : thisNode.getChildren().keySet()){
                             Node thisNode2 = thisNode.getChildren().get(key2);
-
+                            if(joinable(thisNode, nextNode)){
+                                //PT1 =
+                            }
                         }
                     }
                     LadderFactor--;
@@ -52,6 +56,11 @@ public class WPPM {
             }*/
         }
     }
+   /* private Node_Occ join(Node input1, Node input2){
+        Node_Occ _return = new Node_Occ();
+        ArrayList<Character> pattern = new ArrayList<>();
+
+    }*/
     private ArrayList<Node> union(ArrayList<Node> inputN, Node inputP){
         boolean in = false;
         for(int i = 0; i < inputN.size(); i++){
@@ -64,6 +73,16 @@ public class WPPM {
             inputN.add(inputP);
         }
         return inputN;
+    }
+    private boolean joinable(Node input1, Node input2){
+        boolean join = false;
+        for(int i = 0; i < input1.getOcc_vec().size(); i++){
+            if(input2.getOcc_vec().contains(input1.getOcc_vec().get(i))) {
+                join = true;
+                break;
+            }
+        }
+        return join;
     }
     private int _LadderFactor(ArrayList<Integer> input){
         int _return = 0;
