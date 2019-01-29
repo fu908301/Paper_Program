@@ -1,16 +1,24 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Node {
     char c; //這個node代表的字元
     ArrayList<Integer> occ; //這個node的occurrence vector
     double weight;
-    Map<Character, Node_Occ> edge; //指向下一個node的edge
+    Map<Character, Node_Occ> edge; //指向下一個node的edge, character放的是下一個Node的名稱
 
     public Node(){
         occ = new ArrayList<>();
+        edge = new HashMap<>();
         c = 'x';
         weight = 0;
+    }
+    public Node(char c, double weight){
+        occ = new ArrayList<>();
+        this.c = c;
+        this.weight = weight;
+        edge = new HashMap<>();
     }
 
     public void setC(char c){
@@ -27,6 +35,10 @@ public class Node {
 
     public void setEdge(Map<Character, Node_Occ> edge) {
         this.edge = edge;
+    }
+
+    public void addEdge(Character c, Node_Occ NO){
+        edge.put(c, NO);
     }
 
     public char getC() {

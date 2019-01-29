@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -7,6 +8,9 @@ public class Main {
         //String str = input.next();
         String str = "abccabdcacdcabdc";
         WPM testWPM = new WPM(str);
-        testWPM.print();
+        ArrayList<ArrayList<Occ_Weight>> WPM = testWPM.getWPM();
+        WDG testWDG = new WDG();
+        testWDG.print(WPM);
+        //testWPM.print();
     }
 }
