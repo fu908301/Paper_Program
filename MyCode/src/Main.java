@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -9,8 +10,10 @@ public class Main {
         String str = "abccabdcacdcabdc";
         WPM testWPM = new WPM(str);
         ArrayList<ArrayList<Occ_Weight>> WPM = testWPM.getWPM();
-        WDG testWDG = new WDG();
-        testWDG.print(WPM);
+        WDG testWDG = new WDG(testWPM.getNodeMap());
+        //testWDG.print(WPM);
         //testWPM.print();
+        Map<Character, Node> nodes = testWDG.getNode(WPM);
+
     }
 }

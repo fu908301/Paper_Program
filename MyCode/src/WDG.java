@@ -1,14 +1,21 @@
 import java.util.*;
 public class WDG {
-    Map<Character, Node> tempNode;
-    Node node;
-    Node_Occ edge;
-    Other_Cal OC;
+    private Map<Character, Node> tempNode;
+    private Map<Character, ArrayList<Integer>> nodeMap;
+    private Node node;
+    private Node_Occ edge;
+    private Other_Cal OC;
 
     public WDG(){
         tempNode = new HashMap<>();
         OC = new Other_Cal();
     }
+    public WDG(Map<Character, ArrayList<Integer>> nodeMap){
+        tempNode = new HashMap<>();
+        OC = new Other_Cal();
+        this.nodeMap = nodeMap;
+    }
+
 
     public void construct(ArrayList<ArrayList<Occ_Weight>> outWPM){
         char x, y;
@@ -22,12 +29,14 @@ public class WDG {
                     y = OC.IntToChar(j);
                     if (!tempNode.containsKey(x)) {
                         firstNode = new Node(x, OC.getWeight(x));
+                        firstNode.setOcc(nodeMap.get(x));
                         tempNode.put(x, firstNode);
                     } else {
                         firstNode = tempNode.get(x);
                     }
                     if (!tempNode.containsKey(y)) {
                         secondNode = new Node(y, OC.getWeight(y));
+                        secondNode.setOcc(nodeMap.get(y));
                         tempNode.put(y, secondNode);
                     } else {
                         secondNode = tempNode.get(y);
@@ -40,7 +49,7 @@ public class WDG {
         }
     }
 
-    public Map<Character, Node> getNode(ArrayList<ArrayList<Occ_Weight>> outWPM){
+    public Map<Character, Node> getNode(ArrayList<ArrayList<Occ_Weight>> outWPM){ // 一次回傳全部node
         construct(outWPM);
         return tempNode;
     }
@@ -50,7 +59,11 @@ public class WDG {
         Node firstNode;
         for(Object key : tempNode.keySet()){
             firstNode = tempNode.get(key);
-            System.out.println(key + " : ");
+            System.out.print(key + " : ");
+            for(int i = 0; i < firstNode.getOcc().size(); i++){
+                System.out.print(firstNode.getOcc().get(i) + " ");
+            }
+            System.out.println();
             printOneNode(firstNode);
         }
     }

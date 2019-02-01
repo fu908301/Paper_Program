@@ -3,19 +3,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Node {
-    char c; //這個node代表的字元
-    ArrayList<Integer> occ; //這個node的occurrence vector
-    double weight;
-    Map<Character, Node_Occ> edge; //指向下一個node的edge, character放的是下一個Node的名稱
+    private char c; //這個node代表的字元
+    private ArrayList<Integer> occ; //這個node的occurrence vector
+    private double weight;
+    private Map<Character, Node_Occ> edge; //指向下一個node的edge, character放的是下一個Node的名稱
 
     public Node(){
-        occ = new ArrayList<>();
         edge = new HashMap<>();
         c = 'x';
         weight = 0;
     }
     public Node(char c, double weight){
-        occ = new ArrayList<>();
         this.c = c;
         this.weight = weight;
         edge = new HashMap<>();
