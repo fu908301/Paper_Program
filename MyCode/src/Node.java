@@ -7,7 +7,6 @@ public class Node {
     private ArrayList<Integer> occ; //這個node的occurrence vector
     private double weight;
     private Map<Character, Node_Occ> edge; //指向下一個node的edge, character放的是下一個Node的名稱
-
     public Node(){
         edge = new HashMap<>();
         c = 'x';
