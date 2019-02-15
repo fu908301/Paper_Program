@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/Other_Cal.java" line="16" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d12734bd-cc75-461e-9716-353817d6609e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -15,7 +18,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
+            <state relative-caret-position="285">
               <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -27,7 +30,7 @@
       <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
+            <state relative-caret-position="152">
               <caret line="8" column="83" lean-forward="false" selection-start-line="8" selection-start-column="83" selection-end-line="8" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -39,7 +42,7 @@
       <file leaf-file-name="Node_Occ.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Node_Occ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-19">
+            <state relative-caret-position="38">
               <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
               <folding />
             </state>
@@ -61,8 +64,8 @@
       <file leaf-file-name="Other_Cal.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Other_Cal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            <state relative-caret-position="323">
+              <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -71,8 +74,8 @@
       <file leaf-file-name="Occ_Weight.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Occ_Weight.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+            <state relative-caret-position="0">
+              <caret line="0" column="27" lean-forward="true" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -81,8 +84,8 @@
       <file leaf-file-name="WDG.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WDG.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-408">
-              <caret line="29" column="51" lean-forward="true" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+            <state relative-caret-position="19">
+              <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -91,8 +94,8 @@
       <file leaf-file-name="Mining_Process.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mining_Process.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="53" column="45" lean-forward="false" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+            <state relative-caret-position="2014">
+              <caret line="106" column="50" lean-forward="false" selection-start-line="106" selection-start-column="50" selection-end-line="106" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,22 +106,9 @@
       <file leaf-file-name="Pattern_Occ.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pattern_Occ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#437#438#0" expanded="true" />
-                <element signature="e#475#476#0" expanded="true" />
-                <element signature="e#515#516#0" expanded="true" />
-                <element signature="e#545#546#0" expanded="true" />
-                <element signature="e#594#595#0" expanded="true" />
-                <element signature="e#624#625#0" expanded="true" />
-                <element signature="e#656#657#0" expanded="true" />
-                <element signature="e#682#683#0" expanded="true" />
-                <element signature="e#730#731#0" expanded="true" />
-                <element signature="e#760#761#0" expanded="true" />
-                <element signature="e#802#803#0" expanded="true" />
-                <element signature="e#828#829#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="589">
+              <caret line="39" column="9" lean-forward="false" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -144,13 +134,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Occ_Weight.java" />
-        <option value="$PROJECT_DIR$/src/Other_Cal.java" />
         <option value="$PROJECT_DIR$/src/Node_Occ.java" />
         <option value="$PROJECT_DIR$/src/WPM.java" />
         <option value="$PROJECT_DIR$/src/WDG.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Node.java" />
         <option value="$PROJECT_DIR$/src/Pattern_Occ.java" />
+        <option value="$PROJECT_DIR$/src/Other_Cal.java" />
         <option value="$PROJECT_DIR$/src/Mining_Process.java" />
       </list>
     </option>
@@ -235,14 +225,16 @@
       <workItem from="1549890684775" duration="611000" />
       <workItem from="1550041444438" duration="8060000" />
       <workItem from="1550128030993" duration="6348000" />
+      <workItem from="1550232186675" duration="7375000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15019000" />
+    <option name="totallyTimeSpent" value="22394000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -283,6 +275,86 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="8" column="83" lean-forward="false" selection-start-line="8" selection-start-column="83" selection-end-line="8" selection-end-column="83" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Node_Occ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WPM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="44" column="23" lean-forward="false" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Other_Cal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Occ_Weight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WDG.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="29" column="51" lean-forward="true" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pattern_Occ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mining_Process.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="988">
+          <caret line="53" column="45" lean-forward="false" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -501,7 +573,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
+        <state relative-caret-position="285">
           <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -511,7 +583,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="152">
           <caret line="8" column="83" lean-forward="false" selection-start-line="8" selection-start-column="83" selection-end-line="8" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -519,26 +591,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Occ_Weight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WDG.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="29" column="51" lean-forward="true" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Other_Cal.java">
+    <entry file="file://$PROJECT_DIR$/src/Node_Occ.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
-          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -553,39 +609,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Node_Occ.java">
+    <entry file="file://$PROJECT_DIR$/src/Occ_Weight.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        <state relative-caret-position="0">
+          <caret line="0" column="27" lean-forward="true" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WDG.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Other_Cal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pattern_Occ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#437#438#0" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#682#683#0" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#760#761#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
-            <element signature="e#828#829#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="589">
+          <caret line="39" column="9" lean-forward="false" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mining_Process.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="53" column="45" lean-forward="false" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+        <state relative-caret-position="2014">
+          <caret line="106" column="50" lean-forward="false" selection-start-line="106" selection-start-column="50" selection-end-line="106" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

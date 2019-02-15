@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Mining_Process {
@@ -29,6 +30,7 @@ public class Mining_Process {
         Pattern_Occ PO;
         ArrayList<Node_Occ> next_level = new ArrayList<>(); //下一層用的,而且放的是Edge
         ArrayList<Pattern_Occ> next_Answer = new ArrayList<>(); //下一層比對的答案
+        ArrayList<Pattern_Occ> next_Answer2 = new ArrayList<>();
         if(node_now.getOcc().size() * OC.getWeight(node_now.getC()) >= threshold){ //First level
             PO = new Pattern_Occ(); //給新的PO
             PO.add_character(node_now.getC()); //加入起始點的character
@@ -52,9 +54,57 @@ public class Mining_Process {
         PO.add_character('*');
         PO.setOcc(node_now.getOcc());
         next_Answer.add(PO); //把尾端包含*的pattern加入下一層用的答案
+        Map <Character, ArrayList<Integer>> this_map = new HashMap<>();
+        ArrayList<Integer> this_map_occ;
+        ArrayList<Integer> temp_occ = new ArrayList<>();
         for(int i = 3; i < periodicity; i++){ //第三層以後
             count++;
-
+            for(int j = 0; j < next_level.size(); j++){//比對該層的OCC跟下一層的OCC能不能連結
+                this_map.clear();
+                for(int k = 0; k < next_level.get(j).getOcc().size(); k++){ // 這個是去跟人家比對的前一層
+                    for(Object key : next_level.get(j).getNode().getEdge().keySet()){ //這個是下一層node的EDGE數量
+                        for(int l = 0; l < next_level.get(j).getNode().getEdge().get(key).getOcc().size(); l++){ //下一層OCC的量
+                            if(next_level.get(j).getOcc().get(i) + 1 == next_level.get(j).getNode().getEdge().get(key).getOcc().get(l)){ //如果前一層的OCC+1 = 下一層的OCC
+                                if(!this_map.containsKey(next_level.get(j).getNode().getC())){
+                                    this_map_occ = new ArrayList<>(); //新的OCC_VEC
+                                    this_map_occ.add(next_level.get(j).getNode().getEdge().get(key).getOcc().get(l) - count); //把OCC的值-COUNT放進去
+                                    this_map.put(next_level.get(j).getNode().getC(), this_map_occ);
+                                }
+                                else if(this_map.containsKey(next_level.get(j).getNode().getC())){
+                                    this_map.get(next_level.get(j).getNode().getC()).add(next_level.get(j).getNode().getEdge().get(key).getOcc().get(l) - count);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            next_Answer2.clear();
+            for(int x = 0; x < next_Answer.size(); x++){
+                for(int y = 0; y < next_Answer.get(x).getOcc().size(); y++){
+                    for(Object key : this_map.keySet()){
+                        for(int z = 0; z < this_map.get(key).size(); z++){
+                            if(next_Answer.get(x).getOcc().get(y) == this_map.get(key).get(z)){
+                                temp_occ.add(this_map.get(key).get(z));
+                            }
+                        }
+                        double weight = (next_Answer.get(x).average_weight() + OC.getWeight(key.toString().charAt(0))) / (next_Answer.get(x).getPattern().size() + 1);
+                        if(weight * temp_occ.size() > threshold){
+                            PO = new Pattern_Occ();
+                            PO.setPattern(next_Answer.get(x).getPattern());
+                            PO.add_character(key.toString().charAt(0));
+                            PO.setOcc(temp_occ);
+                            answer.add(PO);
+                            next_Answer2.add(PO);
+                        }
+                    }
+                }
+            }
+            for(int x = 0; x < next_Answer.size(); x++){
+                Pattern_Occ tempPO = next_Answer.get(x);
+                tempPO.add_character('*');
+                next_Answer2.add(tempPO);
+            }
+            next_Answer = next_Answer2;//  應該是完成了吧
         }
     }
 }
