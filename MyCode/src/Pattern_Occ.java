@@ -48,4 +48,14 @@ public class Pattern_Occ {
     public ArrayList<Integer> getOcc() {
         return Occ;
     }
+    public void print(){
+        for(int i = 0; i < pattern.size(); i++){
+            System.out.print(pattern.get(i));
+        }
+        System.out.print(" : ");
+        for(int i = 0; i < Occ.size(); i++){
+            System.out.print(Occ.get(i) + " ");
+        }
+        System.out.println();
+    }
 }

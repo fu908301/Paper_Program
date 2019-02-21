@@ -14,6 +14,11 @@ public class Main {
         //testWDG.print(WPM);
         //testWPM.print();
         Map<Character, Node> nodes = testWDG.getNode(WPM);
+        for(Object key : nodes.keySet()){
+            System.out.println(key);
+        }
+        Mining_Process MP = new Mining_Process(nodes);
 
+        MP.print();
     }
 }
