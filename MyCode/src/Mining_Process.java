@@ -91,7 +91,6 @@ public class Mining_Process {
                     }
                 }
             }
-            next_Answer2.clear();
             System.out.println("This Map Test");
             for(Character key : this_map.keySet()){
                 System.out.print(key + ":");
@@ -117,18 +116,29 @@ public class Mining_Process {
                         PO.add_character(key);
                         PO.setOcc(temp_occ);
                         answer.add(PO);
-                        next_Answer2.add(PO);
+                        Pattern_Occ PO2 = new Pattern_Occ(PO);
+                        next_Answer2.add(PO2);
                     }
-                    temp_occ.clear();
+                    temp_occ = new ArrayList<>();
                 }
             }
-            /*for(int x = 0; x < next_Answer.size(); x++){ // 給下一層比對用的答案
+            System.out.println("Next Answer");
+            for(int x = 0; x < next_Answer.size(); x++){
+                next_Answer.get(x).print();
+            }
+            System.out.println("Next Answer finished");
+            for(int x = 0; x < next_Answer.size(); x++){ // 給下一層比對用的答案,這段是要將nextAnswer的東西尾端加上*之後丟進nextAnswer2
                 Pattern_Occ tempPO = next_Answer.get(x);
                 tempPO.add_character('*');
                 next_Answer2.add(tempPO);
             }
+            System.out.println("Next Answer2");
+            for(int x = 0; x < next_Answer2.size(); x++){
+                next_Answer2.get(x).print();
+            }
+            System.out.println("Next Answer2 finished");
             next_Answer = next_Answer2;
-            for(int x = 0; x < next_level.size(); x++){  //  下一層比對用的Edge
+            /*for(int x = 0; x < next_level.size(); x++){  //  下一層比對用的Edge
                 for(Object key: next_level.get(x).getNode().getEdge().keySet())
                     next_level2.add(next_level.get(x).getNode().getEdge().get(key));
             }

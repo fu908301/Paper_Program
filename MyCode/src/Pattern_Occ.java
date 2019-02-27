@@ -17,6 +17,11 @@ public class Pattern_Occ {
         OC = new Other_Cal();
     }
 
+    public Pattern_Occ(Pattern_Occ PO){
+        this.pattern = PO.getPattern();
+        this.Occ = PO.getOcc();
+    }
+
     public void setPattern(ArrayList<Character> pattern){
         this.pattern = pattern;
     }
