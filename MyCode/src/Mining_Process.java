@@ -38,21 +38,25 @@ public class Mining_Process {
         //第一層確定沒問題
         for (Object key : node_now.getEdge().keySet()){  //Second level
             PO = new Pattern_Occ();  //新的PO
+            Pattern_Occ PO2 = new Pattern_Occ();
             PO.add_character(node_now.getC());  //加入起始點的C
             PO.add_character(node_now.getEdge().get(key).getNode().getC()); //加入下一層的C
             PO.setOcc(node_now.getEdge().get(key).getOcc()); //加入下一層的OCC
+            PO2.add_character(node_now.getC());  //加入起始點的C
+            PO2.add_character(node_now.getEdge().get(key).getNode().getC());
+            PO2.setOcc(node_now.getEdge().get(key).getOcc());
             next_level.add(node_now.getEdge().get(key)); //下一層的edge放進去
             tempWeight = (OC.getWeight(node_now.getC()) + OC.getWeight(node_now.getEdge().get(key).getNode().getC())) / 2;
             if(tempWeight * node_now.getEdge().get(key).getOcc().size() >= threshold){
                 answer.add(PO); //如果超過門檻,加入答案
-                next_Answer.add(PO);//下一次的Mining用到
+                next_Answer.add(PO2);//下一次的Mining用到
             }
         }
-        PO = new Pattern_Occ();
-        PO.add_character(node_now.getC());
-        PO.add_character('*');
-        PO.setOcc(node_now.getOcc());
-        next_Answer.add(PO); //把尾端包含*的pattern加入下一層用的答案
+        Pattern_Occ PO3 = new Pattern_Occ();
+        PO3.add_character(node_now.getC());
+        PO3.add_character('*');
+        PO3.setOcc(node_now.getOcc());
+        next_Answer.add(PO3); //把尾端包含*的pattern加入下一層用的答案
         System.out.println("Next Answer:");
         for(int a = 0; a < next_Answer.size(); a++){
             next_Answer.get(a).print();
@@ -111,13 +115,25 @@ public class Mining_Process {
                     }
                     double weight = (next_Answer.get(x).average_weight() + OC.getWeight(key)) / (next_Answer.get(x).getPattern().size() + 1);
                     if(weight * temp_occ.size() > threshold){
-                        PO = new Pattern_Occ();
-                        PO.setPattern(next_Answer.get(x).getPattern());
-                        PO.add_character(key);
-                        PO.setOcc(temp_occ);
-                        answer.add(PO);
-                        Pattern_Occ PO2 = new Pattern_Occ(PO);
-                        next_Answer2.add(PO2);
+                        Pattern_Occ PO5 = new Pattern_Occ();
+                        PO5 = new Pattern_Occ();
+                        ArrayList<Character> tempPattern2 = new ArrayList<>();
+                        for(int z = 0; z < next_Answer.get(x).getPattern().size(); z++){
+                            tempPattern2.add(next_Answer.get(x).getPattern().get(z));
+                        }
+                        PO5.setPattern(tempPattern2);
+                        PO5.add_character(key);
+                        PO5.setOcc(temp_occ);
+                        answer.add(PO5);
+                        Pattern_Occ PO4 = new Pattern_Occ();
+                        ArrayList<Character> tempPattern = new ArrayList<>();
+                        for(int z = 0; z < next_Answer.get(x).getPattern().size(); z++){
+                            tempPattern.add(next_Answer.get(x).getPattern().get(z));
+                        }
+                        PO4.setPattern(tempPattern);
+                        PO4.add_character(key);
+                        PO4.setOcc(temp_occ);
+                        next_Answer2.add(PO4);
                     }
                     temp_occ = new ArrayList<>();
                 }
@@ -128,16 +144,17 @@ public class Mining_Process {
             }
             System.out.println("Next Answer finished");
             for(int x = 0; x < next_Answer.size(); x++){ // 給下一層比對用的答案,這段是要將nextAnswer的東西尾端加上*之後丟進nextAnswer2
-                Pattern_Occ tempPO = next_Answer.get(x);
+                next_Answer.get(x).add_character('*');
+                /*Pattern_Occ tempPO = next_Answer.get(x);
                 tempPO.add_character('*');
-                next_Answer2.add(tempPO);
+                next_Answer2.add(tempPO);*/
             }
-            System.out.println("Next Answer2");
+            /*System.out.println("Next Answer2");
             for(int x = 0; x < next_Answer2.size(); x++){
                 next_Answer2.get(x).print();
             }
             System.out.println("Next Answer2 finished");
-            next_Answer = next_Answer2;
+            next_Answer = next_Answer2;*/
             /*for(int x = 0; x < next_level.size(); x++){  //  下一層比對用的Edge
                 for(Object key: next_level.get(x).getNode().getEdge().keySet())
                     next_level2.add(next_level.get(x).getNode().getEdge().get(key));
