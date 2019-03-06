@@ -74,9 +74,9 @@ public class Mining_Process {
         Map <Character, ArrayList<Integer>> this_map = new HashMap<>();
         ArrayList<Integer> this_map_occ;
         ArrayList<Integer> temp_occ = new ArrayList<>();
-        for(int i = 3; i < periodicity; i++){ //第三層以後
+        for(int i = 3; i <= periodicity; i++){ //第三層以後
             count++;
-            this_map.clear();
+            this_map = new HashMap<>();
             for(int j = 0; j < next_level.size(); j++){//比對該層的OCC跟下一層的OCC能不能連結
                 for(Character key : next_level.get(j).getNode().getEdge().keySet()){ //這個是下一層node的EDGE數量
                     for(int k = 0; k < next_level.get(j).getOcc().size(); k++){ // 這個是去跟人家比對的前一層
@@ -95,6 +95,7 @@ public class Mining_Process {
                     }
                 }
             }
+            next_level2 = new ArrayList<>();
             System.out.println("This Map Test");
             for(Character key : this_map.keySet()){
                 System.out.print(key + ":");
@@ -104,19 +105,19 @@ public class Mining_Process {
                 System.out.println();
             }
             System.out.println("This Map Test Finished");
-            for(int x = 0; x < next_Answer.size(); x++){
+            for(int x = 0; x < next_Answer.size(); x++){ //nextAnswer會增大 檢查問題在哪
                 for(Character key : this_map.keySet()){
                     for(int y = 0; y < next_Answer.get(x).getOcc().size(); y++){
                         for(int z = 0; z < this_map.get(key).size(); z++){
                             if(next_Answer.get(x).getOcc().get(y) == this_map.get(key).get(z)){
                                 temp_occ.add(this_map.get(key).get(z));
+                                System.out.println("NO");
                             }
                         }
                     }
                     double weight = (next_Answer.get(x).average_weight() + OC.getWeight(key)) / (next_Answer.get(x).getPattern().size() + 1);
                     if(weight * temp_occ.size() > threshold){
                         Pattern_Occ PO5 = new Pattern_Occ();
-                        PO5 = new Pattern_Occ();
                         ArrayList<Character> tempPattern2 = new ArrayList<>();
                         for(int z = 0; z < next_Answer.get(x).getPattern().size(); z++){
                             tempPattern2.add(next_Answer.get(x).getPattern().get(z));
@@ -138,28 +139,57 @@ public class Mining_Process {
                     temp_occ = new ArrayList<>();
                 }
             }
-            System.out.println("Next Answer");
-            for(int x = 0; x < next_Answer.size(); x++){
-                next_Answer.get(x).print();
+            System.out.println("Next Answer2");
+            for(int x = 0; x < next_Answer2.size(); x++){
+                next_Answer2.get(x).print();
             }
-            System.out.println("Next Answer finished");
+            System.out.println("Next Answer2 finished");
             for(int x = 0; x < next_Answer.size(); x++){ // 給下一層比對用的答案,這段是要將nextAnswer的東西尾端加上*之後丟進nextAnswer2
                 next_Answer.get(x).add_character('*');
                 /*Pattern_Occ tempPO = next_Answer.get(x);
                 tempPO.add_character('*');
                 next_Answer2.add(tempPO);*/
             }
-            /*System.out.println("Next Answer2");
             for(int x = 0; x < next_Answer2.size(); x++){
-                next_Answer2.get(x).print();
+                next_Answer.add(next_Answer2.get(x));
             }
-            System.out.println("Next Answer2 finished");
-            next_Answer = next_Answer2;*/
-            /*for(int x = 0; x < next_level.size(); x++){  //  下一層比對用的Edge
+            System.out.println("Next Answer");
+            for(int x = 0; x < next_Answer.size(); x++){
+                next_Answer.get(x).print();
+            }
+            System.out.println("Next Answer finished");
+            for(int j = 0; j < next_level.size(); j++){//比對該層的OCC跟下一層的OCC能不能連結
+                for(Character key : next_level.get(j).getNode().getEdge().keySet()){ //這個是下一層node的EDGE數量
+                    for(int k = 0; k < next_level.get(j).getOcc().size(); k++){ // 這個是去跟人家比對的前一層
+                        for(int l = 0; l < next_level.get(j).getNode().getEdge().get(key).getOcc().size(); l++){ //下一層OCC的量
+                            if(next_level.get(j).getOcc().get(k) + 1 == next_level.get(j).getNode().getEdge().get(key).getOcc().get(l)){ //如果前一層的OCC+1 = 下一層的OCC
+                                if(next_level2.contains(next_level.get(j).getNode().getEdge().get(key))){
+                                    break;
+                                }
+                                else{
+                                    next_level2.add(next_level.get(j).getNode().getEdge().get(key));
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            next_level = next_level2;
+
+            /*for(int x = 0; x < next_level.size(); x++){  //  下一層比對用的Edge, 這邊錯了,這邊是直接把下一層全部塞進去
                 for(Object key: next_level.get(x).getNode().getEdge().keySet())
                     next_level2.add(next_level.get(x).getNode().getEdge().get(key));
             }
             next_level = next_level2;*/
+            System.out.println("Next Level:");
+            for(int a = 0; a < next_level.size(); a++){
+                System.out.print(next_level.get(a).getNode().getC() + " : ");
+                for(int b = 0; b < next_level.get(a).getOcc().size(); b++){
+                    System.out.print(next_level.get(a).getOcc().get(b) + " ");
+                }
+                System.out.println();
+            }
         }
     }
 
