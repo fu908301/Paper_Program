@@ -1,4 +1,4 @@
-import javax.print.attribute.standard.NumberOfDocuments;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,7 +10,9 @@ public class WPPM {
     }
     public void WPPM_run(){
         int threshold = 2;
+        int periodicity = 4;
         int LadderFactor;
+        Other_Cal OC = new Other_Cal();
         String input_S = input();
         ArrayList<Character> input_DB = stringToArrayList(input_S);
         ArrayList<Character> unique = getUnique(input_DB);
@@ -25,7 +27,32 @@ public class WPPM {
         trie.build(input_S);
         Node root = trie.getRoot();
         trie.run_all_tree(root);
-        for (Object key : root.getChildren().keySet()){
+        ArrayList<Pattern_Occ> next_answer = new ArrayList<>();
+        ArrayList<Pattern_Occ> answer = new ArrayList<>();
+        ArrayList<Node> next_level = new ArrayList<>();
+        for (String key : root.getChildren().keySet()){
+            Node nextNode = root.getChildren().get(key); //level one
+            if(nextNode.getOcc_vec().size() * OC.getWeight(key.charAt(0)) >= threshold){ //如果第一層有過門檻
+                Pattern_Occ PO = new Pattern_Occ();
+                PO.add_character(nextNode.getC());
+                PO.setOcc(nextNode.getOcc_vec());
+                Pattern_Occ PO2 = new Pattern_Occ();
+                PO2.add_character(nextNode.getC());
+                PO2.setOcc(nextNode.getOcc_vec());
+                next_answer.add(PO);
+            }
+            next_level.add(nextNode);
+            for(int i = 0; i < periodicity - 1; i++) { //第二層以後
+                for (int j = 0; j < next_level.size(); j++) {
+                    Node preNode = next_level.get(j);
+                    for(String key2 : preNode.getChildren().keySet()){
+                        Node nextNode2 = preNode.getChildren().get(key2);
+
+                    }
+                }
+            }
+        }
+        /*for (Object key : root.getChildren().keySet()){
             Node nextNode = root.getChildren().get(key);
             double test = getMaxWeight(nextNode);
             Periodicity_detection tempPD = new Periodicity_detection(nextNode.getOcc_vec(), nextNode.getOcc_vec().size(), 1, input_S.length());
@@ -50,11 +77,11 @@ public class WPPM {
                     LadderFactor--;
                 }
             }
-            /*System.out.println(key);
+            System.out.println(key);
             for(int i = 0; i < ST1.size(); i++){
                 ST1.get(i).print();
-            }*/
-        }
+            }
+        }*/
     }
    /* private Node_Occ join(Node input1, Node input2){
         Node_Occ _return = new Node_Occ();
