@@ -1,8 +1,5 @@
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class WPPM {
     private SuffixTrie trie = null;
@@ -11,46 +8,154 @@ public class WPPM {
     public void WPPM_run(){
         int threshold = 2;
         int periodicity = 4;
-        int LadderFactor;
         Other_Cal OC = new Other_Cal();
         String input_S = input();
         ArrayList<Character> input_DB = stringToArrayList(input_S);
         ArrayList<Character> unique = getUnique(input_DB);
-        ArrayList<Integer> len_vec = new ArrayList<>();
-        ArrayList<Node> CN = new ArrayList<>();
-        ArrayList<Node> N = new ArrayList<>();
-        HashMap<Character, ArrayList> C = new HashMap<>();
-        HashMap<Character, Float> weight = setWeight(unique);
-        Node_Occ PT1 = new Node_Occ();
+        Map<Character, ArrayList<Integer>> tempMap = new HashMap<>();
         //printTest(input_DB, unique, weight);
         trie = new SuffixTrie();
         trie.build(input_S);
         Node root = trie.getRoot();
-        trie.run_all_tree(root);
         ArrayList<Pattern_Occ> next_answer = new ArrayList<>();
+        ArrayList<Pattern_Occ> next_answer2 = new ArrayList<>();
         ArrayList<Pattern_Occ> answer = new ArrayList<>();
         ArrayList<Node> next_level = new ArrayList<>();
         for (String key : root.getChildren().keySet()){
+            next_answer.clear();
+            next_answer2.clear();
+            next_level.clear();
             Node nextNode = root.getChildren().get(key); //level one
             if(nextNode.getOcc_vec().size() * OC.getWeight(key.charAt(0)) >= threshold){ //如果第一層有過門檻
                 Pattern_Occ PO = new Pattern_Occ();
                 PO.add_character(nextNode.getC());
                 PO.setOcc(nextNode.getOcc_vec());
+                answer.add(PO);
                 Pattern_Occ PO2 = new Pattern_Occ();
                 PO2.add_character(nextNode.getC());
                 PO2.setOcc(nextNode.getOcc_vec());
-                next_answer.add(PO);
+                next_answer.add(PO2);
             }
             next_level.add(nextNode);
+            /*for(int i = 0; i < answer.size();i++){
+                answer.get(i).print();
+            }
+            for(int i = 0; i < next_answer.size(); i++){
+                next_answer.get(i).print();
+            }*/
             for(int i = 0; i < periodicity - 1; i++) { //第二層以後
+                /*System.out.println("Next Level : ");
+                for(int x = 0 ; x < next_level.size(); x++){
+                    System.out.print(next_level.get(x).getC() + " : ");
+                    for(int y = 0; y < next_level.get(x).getOcc_vec().size(); y++){
+                        System.out.print(next_level.get(x).getOcc_vec().get(y) + " ");
+                    }
+                    System.out.println();
+                }
+
+                System.out.println("Next level finished");*/
+                tempMap = new HashMap<>();
                 for (int j = 0; j < next_level.size(); j++) {
                     Node preNode = next_level.get(j);
-                    for(String key2 : preNode.getChildren().keySet()){
-                        Node nextNode2 = preNode.getChildren().get(key2);
-
+                    if(preNode.getChildren() != null) {
+                        for (String key2 : preNode.getChildren().keySet()) { // 這個迴圈是把下一層NODE的OCC放進去tempMap,run tree的過程可能有點問題
+                            Node nextNode2 = preNode.getChildren().get(key2);
+                            char c = key2.charAt(0);
+                            if (!tempMap.containsKey(c)) {
+                                ArrayList<Integer> tempOcc = new ArrayList<>();
+                                for (int k = 0; k < nextNode2.getOcc_vec().size(); k++) {
+                                    tempOcc.add(nextNode2.getOcc_vec().get(k));
+                                }
+                                tempMap.put(c, tempOcc);
+                            } else {
+                                for (int k = 0; k < nextNode2.getOcc_vec().size(); k++) {
+                                    tempMap.get(c).add(nextNode2.getOcc_vec().get(k));
+                                }
+                            }
+                        }
                     }
                 }
+                System.out.println("temp test");
+                for(Object x : tempMap.keySet()){
+                    System.out.println(x  + ":" +  tempMap.get(x));
+                }
+                System.out.println("temp finish");
+                System.out.println("next answer test");
+                for(int z = 0; z < next_answer.size(); z++){
+                    next_answer.get(z).print();
+                }
+                System.out.println("next answer finish");
+                next_answer2 = new ArrayList<>();
+                Pattern_Occ tempPO = new Pattern_Occ();
+                Pattern_Occ tempPO2 = new Pattern_Occ();
+                for(int k = 0; k < next_answer.size(); k++){ //這邊是結合上一層與下一層的OCC
+                    for(Character key3 : tempMap.keySet()){
+                        tempPO = new Pattern_Occ();
+                        for(int z = 0; z < next_answer.get(k).getPattern().size(); z++){
+                            tempPO.add_character(next_answer.get(k).getPattern().get(z));
+                        }
+                        tempPO.add_character(key3);
+                        tempPO2 = new Pattern_Occ();
+                        for(int z = 0; z < next_answer.get(k).getPattern().size(); z++){
+                            tempPO2.add_character(next_answer.get(k).getPattern().get(z));
+                        }
+                        tempPO2.add_character(key3);
+                        for(int l = 0; l < next_answer.get(k).getOcc().size(); l++){
+                            for(int m = 0; m < tempMap.get(key3).size(); m++){
+                                if(next_answer.get(k).getOcc().get(l) == tempMap.get(key3).get(m)){
+                                    tempPO.addOcc(next_answer.get(k).getOcc().get(l));
+                                    tempPO2.addOcc(next_answer.get(k).getOcc().get(l));
+                                }
+                            }
+                        }
+                        /*System.out.println("TEMP");
+                        tempPO.print();
+                        System.out.println("TEMP FINISH");*/
+                        if(tempPO.getOcc().size() * tempPO.average_weight() >= threshold){
+                            System.out.println("TEMP PO");
+                            tempPO.print();
+                            tempPO2.print();
+                            answer.add(tempPO);
+                            next_answer2.add(tempPO2);
+                        }
+                    }
+                }
+               /* System.out.println("Answer print");
+                for(int c = 0; c < answer.size(); c++){
+                    answer.get(c).print();
+                }
+                System.out.println("Answer print finish");
+                System.out.println("Next Answer2 print");
+                for(int c = 0; c < next_answer2.size(); c++){
+                    next_answer2.get(c).print();
+                }
+                System.out.println("Next Answer2 print finish");*/
+
+                for(int x = 0; x < next_answer.size(); x++){
+                    Pattern_Occ tempPO3 = new Pattern_Occ();
+                    for(int z = 0; z < next_answer.get(x).getPattern().size(); z++){
+                        tempPO3.add_character(next_answer.get(x).getPattern().get(z));
+                    }
+                    tempPO3.add_character('*');
+                    for(int z = 0; z < next_answer.get(x).getOcc().size(); z++){
+                        tempPO3.addOcc(next_answer.get(x).getOcc().get(z));
+                    }
+                    next_answer2.add(tempPO3);
+                }
+                next_answer = next_answer2;
+                ArrayList<Node> next_level2 = new ArrayList<>();
+                for(int x = 0; x < next_level.size(); x++){
+                    if(next_level.get(x).getChildren() != null) {
+                        for (Object c : next_level.get(x).getChildren().keySet()) {
+                            next_level2.add(next_level.get(x).getChildren().get(c));
+                        }
+                    }
+                }
+                next_level = next_level2;
             }
+        }
+        for(int z = 0; z < answer.size(); z++){
+            answer.get(z).print();
         }
         /*for (Object key : root.getChildren().keySet()){
             Node nextNode = root.getChildren().get(key);
@@ -82,48 +187,7 @@ public class WPPM {
                 ST1.get(i).print();
             }
         }*/
-    }
-   /* private Node_Occ join(Node input1, Node input2){
-        Node_Occ _return = new Node_Occ();
-        ArrayList<Character> pattern = new ArrayList<>();
 
-    }*/
-    private ArrayList<Node> union(ArrayList<Node> inputN, Node inputP){
-        boolean in = false;
-        for(int i = 0; i < inputN.size(); i++){
-            if(inputN.get(i).getC() == inputP.getC()){
-                in = true;
-                break;
-            }
-        }
-        if(!in){
-            inputN.add(inputP);
-        }
-        return inputN;
-    }
-    private boolean joinable(Node input1, Node input2){
-        boolean join = false;
-        for(int i = 0; i < input1.getOcc_vec().size(); i++){
-            if(input2.getOcc_vec().contains(input1.getOcc_vec().get(i))) {
-                join = true;
-                break;
-            }
-        }
-        return join;
-    }
-    private int _LadderFactor(ArrayList<Integer> input){
-        int _return = 0;
-        int loc;
-        Collections.sort(input);
-        if(input.size() % 2 == 0){
-            loc = input.size() / 2;
-            _return = input.get(loc);
-        }
-        else if(input.size() % 2 != 0){
-            loc = input.size() / 2 - 1;
-            _return = input.get(loc);
-        }
-        return _return;
     }
     private String input(){
         String input_S;
@@ -149,56 +213,5 @@ public class WPPM {
             }
         }
         return tempArrayList;
-    }
-
-    private HashMap<Character, Float> setWeight(ArrayList<Character> input){
-        HashMap<Character, Float> tempHash = new HashMap<>();
-        for(int i = 0; i < input.size(); i++){
-            if(input.get(i) == 'a'){
-                tempHash.put(input.get(i), 0.8f);
-            }
-            else if(input.get(i) == 'b'){
-                tempHash.put(input.get(i), 0.6f);
-            }
-            else if(input.get(i) == 'c'){
-                tempHash.put(input.get(i), 0.7f);
-            }
-            else if(input.get(i) == 'd'){
-                tempHash.put(input.get(i), 0.5f);
-            }
-        }
-        return tempHash;
-    }
-
-    private void printTest(ArrayList<Character> input1, ArrayList<Character> input2, HashMap<Character, Float> input3){
-        System.out.println("Input");
-        for(int i = 0; i < input1.size(); i++){
-            System.out.println(input1.get(i));
-        }
-        System.out.println("Unique");
-        for(int i = 0; i < input2.size(); i++){
-            System.out.println(input2.get(i));
-        }
-        System.out.println("Item with weight");
-        for(Object key : input3.keySet()){
-            System.out.println(key + ":" + input3.get(key));
-        }
-    }
-
-    private double getMaxWeight(Node input){
-        double currentW = input.getWeight();
-        if(input.getChildren() != null) {
-            for (Object key : input.getChildren().keySet()) {
-                Node nextNode = input.getChildren().get(key);
-                double nextW = getMaxWeight(nextNode);
-                if(currentW > nextW){
-                    return currentW;
-                }
-                else{
-                    return nextW;
-                }
-            }
-        }
-      return currentW;
     }
 }

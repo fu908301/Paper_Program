@@ -43,6 +43,7 @@ public class Pattern_Occ {
         for(int i = 0; i < pattern.size(); i++){
             _return += OC.getWeight(pattern.get(i));
         }
+        _return = _return / pattern.size();
         return _return;
     }
 
