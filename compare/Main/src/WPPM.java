@@ -31,11 +31,11 @@ public class WPPM {
                 PO.add_character(nextNode.getC());
                 PO.setOcc(nextNode.getOcc_vec());
                 answer.add(PO);
-                Pattern_Occ PO2 = new Pattern_Occ();
-                PO2.add_character(nextNode.getC());
-                PO2.setOcc(nextNode.getOcc_vec());
-                next_answer.add(PO2);
             }
+            Pattern_Occ PO2 = new Pattern_Occ();
+            PO2.add_character(nextNode.getC());
+            PO2.setOcc(nextNode.getOcc_vec());
+            next_answer.add(PO2);
             next_level.add(nextNode);
             /*for(int i = 0; i < answer.size();i++){
                 answer.get(i).print();
@@ -58,7 +58,7 @@ public class WPPM {
                 for (int j = 0; j < next_level.size(); j++) {
                     Node preNode = next_level.get(j);
                     if(preNode.getChildren() != null) {
-                        for (String key2 : preNode.getChildren().keySet()) { // 這個迴圈是把下一層NODE的OCC放進去tempMap,run tree的過程可能有點問題
+                        for (String key2 : preNode.getChildren().keySet()) { // 這個迴圈是把下一層NODE的OCC放進去tempMap
                             Node nextNode2 = preNode.getChildren().get(key2);
                             char c = key2.charAt(0);
                             if (!tempMap.containsKey(c)) {
@@ -75,7 +75,7 @@ public class WPPM {
                         }
                     }
                 }
-                System.out.println("temp test");
+                /*System.out.println("temp test");
                 for(Object x : tempMap.keySet()){
                     System.out.println(x  + ":" +  tempMap.get(x));
                 }
@@ -84,7 +84,7 @@ public class WPPM {
                 for(int z = 0; z < next_answer.size(); z++){
                     next_answer.get(z).print();
                 }
-                System.out.println("next answer finish");
+                System.out.println("next answer finish");*/
                 next_answer2 = new ArrayList<>();
                 Pattern_Occ tempPO = new Pattern_Occ();
                 Pattern_Occ tempPO2 = new Pattern_Occ();
@@ -108,9 +108,9 @@ public class WPPM {
                                 }
                             }
                         }
-                        /*System.out.println("TEMP");
+                        System.out.println("TEMP");
                         tempPO.print();
-                        System.out.println("TEMP FINISH");*/
+                        System.out.println("TEMP FINISH");
                         if(tempPO.getOcc().size() * tempPO.average_weight() >= threshold){
                             System.out.println("TEMP PO");
                             tempPO.print();
