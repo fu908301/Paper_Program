@@ -14,8 +14,16 @@ public class Other_Cal {
         }
         else if (c == 'd'){
             weight = 0.5;
-        } else if (c == '*'){
-            weight = 0.8;
+        }else if (c == 'e'){
+            weight = 0.9;
+        } else if (c == 'f'){
+            weight = 0.55;
+        }else if (c == 'g'){
+            weight = 0.75;
+        }else if (c == 'h'){
+            weight = 0.85;
+        }else if (c == '*'){
+            weight = 0.9;
         }
         return weight;
     }
