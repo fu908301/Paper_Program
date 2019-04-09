@@ -54,34 +54,6 @@ public class WDG {
         return tempNode;
     }
 
-    public void print(ArrayList<ArrayList<Occ_Weight>> outWPM){
-        construct(outWPM);
-        Node firstNode;
-        for(Object key : tempNode.keySet()){
-            firstNode = tempNode.get(key);
-            System.out.print(key + " : ");
-            for(int i = 0; i < firstNode.getOcc().size(); i++){
-                System.out.print(firstNode.getOcc().get(i) + " ");
-            }
-            System.out.println();
-            printOneNode(firstNode);
-        }
-    }
 
-    public void printOneNode(Node thisNode){
-        if(thisNode.getEdge() != null){
-            for(Object key : thisNode.getEdge().keySet()){
-                if(thisNode.getEdge().get(key).getCheck()){
-                    thisNode.getEdge().get(key).changeCheck(false);
-                    System.out.print(thisNode.getC() + " " + key + " : ");
-                    for(int i = 0; i < thisNode.getEdge().get(key).getOcc().size(); i++){
-                        System.out.print(thisNode.getEdge().get(key).getOcc().get(i) + " ");
-                    }
-                    System.out.println();
-                    Node nextNode = thisNode.getEdge().get(key).getNode();
-                    printOneNode(nextNode);
-                }
-            }
-        }
-    }
+
 }

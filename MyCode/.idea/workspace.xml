@@ -6,17 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d12734bd-cc75-461e-9716-353817d6609e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCode/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCode/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCode/Other_Cal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCode/Other_Cal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCode/Mining_Process.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCode/Mining_Process.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCode/WDG.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCode/WDG.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MyCode/WPM.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCode/WPM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mining_Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mining_Process.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Other_Cal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Other_Cal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WDG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WDG.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WPM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WPM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../compare/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../compare/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../compare/Main/src/Other_Cal.java" beforeDir="false" afterPath="$PROJECT_DIR$/../compare/Main/src/Other_Cal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../compare/Main/src/WPPM.java" beforeDir="false" afterPath="$PROJECT_DIR$/../compare/Main/src/WPPM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../compare/out/production/Main/Other_Cal.class" beforeDir="false" afterPath="$PROJECT_DIR$/../compare/out/production/Main/Other_Cal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../compare/out/production/Main/WPPM.class" beforeDir="false" afterPath="$PROJECT_DIR$/../compare/out/production/Main/WPPM.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,26 +27,26 @@
     <session id="-965470804">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2074" />
+          <entry key="java" value="2286" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2074" />
+          <entry key="JAVA" value="2286" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -69,7 +66,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-133">
+            <state relative-caret-position="209">
               <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -93,7 +90,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Node_Occ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
+            <state relative-caret-position="-80">
               <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
             </state>
           </provider>
@@ -102,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WPM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1273">
-              <caret line="80" column="30" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
+            <state relative-caret-position="456">
+              <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,8 +129,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WDG.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="988">
-              <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+            <state relative-caret-position="741">
+              <caret line="39" column="52" lean-forward="true" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -141,8 +138,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mining_Process.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+            <state relative-caret-position="518">
+              <caret line="207" column="61" selection-start-line="207" selection-start-column="61" selection-end-line="207" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,7 +150,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pattern_Occ.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
+            <state relative-caret-position="-494">
               <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
@@ -182,11 +179,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/Occ_Weight.java" />
         <option value="$PROJECT_DIR$/src/Node_Occ.java" />
-        <option value="$PROJECT_DIR$/src/WDG.java" />
         <option value="$PROJECT_DIR$/src/Node.java" />
         <option value="$PROJECT_DIR$/src/Pattern_Occ.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Other_Cal.java" />
+        <option value="$PROJECT_DIR$/src/WDG.java" />
         <option value="$PROJECT_DIR$/src/WPM.java" />
         <option value="$PROJECT_DIR$/src/Mining_Process.java" />
       </list>
@@ -209,7 +206,27 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MyCode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCode" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -277,7 +294,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31053203" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14875136" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.13572204" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -334,7 +351,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Node_Occ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
+        <state relative-caret-position="-80">
           <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
         </state>
       </provider>
@@ -358,7 +375,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-133">
+        <state relative-caret-position="209">
           <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -375,8 +392,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WPM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1273">
-          <caret line="80" column="30" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
+        <state relative-caret-position="456">
+          <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -385,22 +402,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pattern_Occ.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
+        <state relative-caret-position="-494">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WDG.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+        <state relative-caret-position="741">
+          <caret line="39" column="52" lean-forward="true" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mining_Process.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        <state relative-caret-position="518">
+          <caret line="207" column="61" selection-start-line="207" selection-start-column="61" selection-end-line="207" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

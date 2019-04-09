@@ -87,9 +87,9 @@ public class WPPM {
                 }
                 System.out.println("next answer finish");*/
                 next_answer2 = new ArrayList<>();
-                Pattern_Occ tempPO = new Pattern_Occ();
-                Pattern_Occ tempPO2 = new Pattern_Occ();
-                for(int k = 0; k < next_answer.size(); k++){ //這邊是結合上一層與下一層的OCC
+                Pattern_Occ tempPO;
+                Pattern_Occ tempPO2;
+                for(int k = 0; k < next_answer.size(); k++){ //這邊是結合上一層與下一層的OCC,這邊的結合有問題
                     for(Character key3 : tempMap.keySet()){
                         tempPO = new Pattern_Occ();
                         for(int z = 0; z < next_answer.get(k).getPattern().size(); z++){
@@ -103,13 +103,17 @@ public class WPPM {
                         tempPO2.add_character(key3);
                         for(int l = 0; l < next_answer.get(k).getOcc().size(); l++){
                             for(int m = 0; m < tempMap.get(key3).size(); m++){
-                                if(next_answer.get(k).getOcc().get(l) == tempMap.get(key3).get(m)){
+                                int next_A = next_answer.get(k).getOcc().get(l);
+                                int temp_M = tempMap.get(key3).get(m);
+                                /*System.out.println("Next answer : " + next_A);
+                                System.out.println("Temp Map : " + temp_M);*/
+                                if(next_A == temp_M){
                                     tempPO.addOcc(next_answer.get(k).getOcc().get(l));
                                     tempPO2.addOcc(next_answer.get(k).getOcc().get(l));
                                 }
                             }
                         }
-                       /* System.out.println("TEMP");
+                        /*System.out.println("TEMP");
                         tempPO.print();
                         System.out.println("TEMP FINISH");*/
                         if(tempPO.getOcc().size() * tempPO.average_weight() >= threshold){
@@ -158,6 +162,7 @@ public class WPPM {
         for(int z = 0; z < answer.size(); z++){
             answer.get(z).print();
         }
+        System.out.println("Answer Size : " + answer.size());
         /*for (Object key : root.getChildren().keySet()){
             Node nextNode = root.getChildren().get(key);
             double test = getMaxWeight(nextNode);

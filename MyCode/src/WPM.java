@@ -43,7 +43,7 @@ public class WPM {
             }
         }
         unique = nodeMap.size();
-        System.out.println("Size : " + unique);
+       // System.out.println("Size : " + unique);
     }
     public Map<Character, ArrayList<Integer>> getNodeMap(){
         return nodeMap;
@@ -85,8 +85,8 @@ public class WPM {
             else {
                 outWPM.get(x).get(y).setOcc(i);
             }
-            outWPM.get(x).get(y).print();
-            System.out.println();
+            //outWPM.get(x).get(y).print();
+            //System.out.println();
         }
     }
 
