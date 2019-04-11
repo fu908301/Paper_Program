@@ -22,7 +22,22 @@ public class Other_Cal {
             weight = 0.75;
         }else if (c == 'h'){
             weight = 0.85;
-        }else if (c == '*'){
+        }
+        else if (c == 'i'){
+            weight = 0.65;
+        }
+        else if (c == 'j'){
+            weight = 0.75;
+        }
+        else if (c == 'k'){
+            weight = 0.45;
+        }else if (c == 'l'){
+            weight = 0.85;
+        }
+        else if (c == 'm'){
+            weight = 0.35;
+        }
+        else if (c == '*'){
             weight = 0.9;
         }
         return weight;
@@ -53,6 +68,21 @@ public class Other_Cal {
         else if (c == 'h'){
             _return = 7;
         }
+        else if (c == 'i'){
+            _return = 8;
+        }
+        else if (c == 'j'){
+            _return = 9;
+        }
+        else if (c == 'k'){
+            _return = 10;
+        }
+        else if (c == 'l'){
+            _return = 11;
+        }
+        else if (c == 'm'){
+            _return = 12;
+        }
         return _return;
     }
 
@@ -81,6 +111,21 @@ public class Other_Cal {
         }
         else if (i == 7){
             _return = 'h';
+        }
+        else if (i == 8){
+            _return = 'i';
+        }
+        else if (i == 9){
+            _return = 'j';
+        }
+        else if (i == 10){
+            _return = 'k';
+        }
+        else if (i == 11){
+            _return = 'l';
+        }
+        else if (i == 12){
+            _return = 'm';
         }
         return _return;
     }

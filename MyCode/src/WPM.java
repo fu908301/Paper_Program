@@ -29,10 +29,14 @@ public class WPM {
     private void setUnique(){ //設定unique的function,以及Node之Occ_Vec
         //ArrayList<Character> tempL = new ArrayList<>();
         ArrayList<Integer> tempOcc;
+        int max = 0;
         for(int i = 0; i < inputS.length(); i++){
             /*if(!tempL.contains(inputS.charAt(i))){
                 tempL.add(inputS.charAt(i));
             }*/
+            if(OC.CharToInt(inputS.charAt(i)) > max){
+                max = OC.CharToInt(inputS.charAt(i));
+            }
 
             if(!nodeMap.containsKey(inputS.charAt(i))){
                 tempOcc = new ArrayList<>();
@@ -42,7 +46,8 @@ public class WPM {
                 nodeMap.get(inputS.charAt(i)).add(i);
             }
         }
-        unique = nodeMap.size();
+
+        unique = max + 1;
        // System.out.println("Size : " + unique);
     }
     public Map<Character, ArrayList<Integer>> getNodeMap(){
@@ -92,7 +97,7 @@ public class WPM {
 
     public ArrayList<ArrayList<Occ_Weight>> getWPM(){
         setWPM();
-        printnodeMap();
+        //printnodeMap();
         return outWPM;
     }
 

@@ -13,7 +13,7 @@ public class Mining_Process {
     public Mining_Process(){}
     public Mining_Process(Map<Character, Node> nodes){
         this.nodes = nodes;
-        this.periodicity = 4;
+        this.periodicity = 5;
         this.threshold = 2;
         OC = new Other_Cal();
         answer = new ArrayList<>();
@@ -122,7 +122,7 @@ public class Mining_Process {
                             System.out.print("TempPattern2 : " + next_Answer.get(x));
                         }
                         System.out.println("OCC : " + temp_occ);*/
-                        if (weight * temp_occ.size() > threshold) {
+                        if (weight * temp_occ.size() >= threshold) {
                             Pattern_Occ PO5 = new Pattern_Occ();
                             ArrayList<Character> tempPattern2 = new ArrayList<>();
                             for (int z = 0; z < next_Answer.get(x).getPattern().size(); z++) {
@@ -145,11 +145,11 @@ public class Mining_Process {
                         temp_occ = new ArrayList<>();
                     }
                 }
-                /*System.out.println("Next Answer2");
+                System.out.println("Next Answer2");
                 for (int x = 0; x < next_Answer2.size(); x++) {
                     next_Answer2.get(x).print();
                 }
-                System.out.println("Next Answer2 finished");*/
+                System.out.println("Next Answer2 finished");
                 for (int x = 0; x < next_Answer.size(); x++) { // 給下一層比對用的答案,這段是要將nextAnswer的東西尾端加上*之後丟進nextAnswer2
                     next_Answer.get(x).add_character('*');
                 /*Pattern_Occ tempPO = next_Answer.get(x);
@@ -159,6 +159,10 @@ public class Mining_Process {
                 for (int x = 0; x < next_Answer2.size(); x++) {
                     next_Answer.add(next_Answer2.get(x));
                 }
+               /* System.out.println("Next Answer print");
+                for(int b = 0; b < next_Answer.size(); b++){
+                    next_Answer.get(b).print();
+                }*/
                 /*System.out.println("Next Answer");
                 for (int x = 0; x < next_Answer.size(); x++) {
                     next_Answer.get(x).print();

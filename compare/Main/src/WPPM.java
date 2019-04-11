@@ -159,10 +159,12 @@ public class WPPM {
                 next_level = next_level2;
             }
         }
+        System.out.println("Answer print.");
         for(int z = 0; z < answer.size(); z++){
             answer.get(z).print();
         }
         System.out.println("Answer Size : " + answer.size());
+        System.out.println("Answer print finised.");
         /*for (Object key : root.getChildren().keySet()){
             Node nextNode = root.getChildren().get(key);
             double test = getMaxWeight(nextNode);
@@ -199,7 +201,7 @@ public class WPPM {
         String input_S = new String();
         try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data4.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();
@@ -241,6 +243,21 @@ public class WPPM {
 
     private char change(double input){
         char _return = 'x';
+        if(input >= 25 && input < 30){
+            _return = 'm';
+        }
+        if(input >= 30 && input < 35){
+            _return = 'l';
+        }
+        if(input >= 35 && input < 40){
+            _return = 'k';
+        }
+        if(input >= 40 && input < 45){
+            _return = 'j';
+        }
+        if(input >= 45 && input < 50){
+            _return = 'i';
+        }
         if(input >= 50 && input < 55){
             _return = 'a';
         }

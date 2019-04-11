@@ -22,7 +22,21 @@ public class Other_Cal {
             weight = 0.75;
         }else if (c == 'h'){
             weight = 0.85;
-        }else if (c == '*'){
+        }else if (c == 'i'){
+            weight = 0.65;
+        }
+        else if (c == 'j'){
+            weight = 0.75;
+        }
+        else if (c == 'k'){
+            weight = 0.45;
+        }else if (c == 'l'){
+            weight = 0.85;
+        }
+        else if (c == 'm'){
+            weight = 0.35;
+        }
+        else if (c == '*'){
             weight = 0.9;
         }
         return weight;

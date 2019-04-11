@@ -8,26 +8,28 @@ public class Main {
         //System.out.println("輸入");
         //Scanner input = new Scanner(System.in);
         //String str = input.next();
+        long time1 = System.currentTimeMillis();
         String str = input();
-        System.out.println(str);
+        //System.out.println(str);
         WPM testWPM = new WPM(str);
         ArrayList<ArrayList<Occ_Weight>> WPM = testWPM.getWPM();
         WDG testWDG = new WDG(testWPM.getNodeMap());
         //testWDG.print(WPM);
         //testWPM.print();
         Map<Character, Node> nodes = testWDG.getNode(WPM);
-        for(Object key : nodes.keySet()){
+       /* for(Object key : nodes.keySet()){
             System.out.println(key);
-        }
+        }*/
         Mining_Process MP = new Mining_Process(nodes);
-
         MP.print();
+        long time2 = System.currentTimeMillis();
+        System.out.println("Time : " + (time2 - time1));
     }
     private static String input(){
         String input_S = new String();
         try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data4.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();
@@ -51,6 +53,21 @@ public class Main {
 
     private static char change(double input){
         char _return = 'x';
+        if(input >= 25 && input < 30){
+            _return = 'm';
+        }
+        if(input >= 30 && input < 35){
+            _return = 'l';
+        }
+        if(input >= 35 && input < 40){
+            _return = 'k';
+        }
+        if(input >= 40 && input < 45){
+            _return = 'j';
+        }
+        if(input >= 45 && input < 50){
+            _return = 'i';
+        }
         if(input >= 50 && input < 55){
             _return = 'a';
         }

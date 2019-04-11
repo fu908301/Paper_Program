@@ -15,7 +15,10 @@ public class Main {
         Periodicity_detection p = new Periodicity_detection(test, size, threshold, length);
         p.algorithm();
         p.print();*/
+        long time1 = System.currentTimeMillis();
         WPPM testWPPM = new WPPM();
         testWPPM.WPPM_run();
+        long time2 = System.currentTimeMillis();
+        System.out.println("Time : " + (time2 - time1));
     }
 }
