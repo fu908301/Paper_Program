@@ -29,7 +29,7 @@ public class Main {
         String input_S = new String();
         try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data4.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();

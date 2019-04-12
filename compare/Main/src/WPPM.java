@@ -8,7 +8,7 @@ public class WPPM {
     }
     public void WPPM_run(){
         int threshold = 2;
-        int periodicity = 4;
+        int periodicity = 10;
         Other_Cal OC = new Other_Cal();
         String input_S = input();
         ArrayList<Character> input_DB = stringToArrayList(input_S);
@@ -201,7 +201,7 @@ public class WPPM {
         String input_S = new String();
         try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data4.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();

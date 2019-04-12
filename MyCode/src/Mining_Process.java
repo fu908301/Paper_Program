@@ -13,7 +13,7 @@ public class Mining_Process {
     public Mining_Process(){}
     public Mining_Process(Map<Character, Node> nodes){
         this.nodes = nodes;
-        this.periodicity = 5;
+        this.periodicity = 10;
         this.threshold = 2;
         OC = new Other_Cal();
         answer = new ArrayList<>();
@@ -106,6 +106,9 @@ public class Mining_Process {
                 }
                 System.out.println("This Map Test Finished");*/
                 for (int x = 0; x < next_Answer.size(); x++) {
+                    /*System.out.println(x + " Next Answer");
+                    next_Answer.get(x).print();
+                    System.out.println("Next Answer Finish");*/
                     for (Character key : this_map.keySet()) {
                         for (int y = 0; y < next_Answer.get(x).getOcc().size(); y++) {
                             for (int z = 0; z < this_map.get(key).size(); z++) {
@@ -118,8 +121,9 @@ public class Mining_Process {
                             }
                         }
                         double weight = (next_Answer.get(x).average_weight() + OC.getWeight(key)) / (next_Answer.get(x).getPattern().size() + 1);
-                       /* for (int z = 0; z < next_Answer.get(x).getPattern().size(); z++){
-                            System.out.print("TempPattern2 : " + next_Answer.get(x));
+                        /*for (int z = 0; z < next_Answer.get(x).getPattern().size(); z++){
+                            System.out.print("TempPattern2 : " );
+                            next_Answer.get(x).print();
                         }
                         System.out.println("OCC : " + temp_occ);*/
                         if (weight * temp_occ.size() >= threshold) {
@@ -131,6 +135,9 @@ public class Mining_Process {
                             PO5.setPattern(tempPattern2);
                             PO5.add_character(key);
                             PO5.setOcc(temp_occ);
+                            /*System.out.println("PO5");
+                            PO5.print();
+                            System.out.println("PO5 finished");*/
                             answer.add(PO5);
                             Pattern_Occ PO4 = new Pattern_Occ();
                             ArrayList<Character> tempPattern = new ArrayList<>();
@@ -140,16 +147,19 @@ public class Mining_Process {
                             PO4.setPattern(tempPattern);
                             PO4.add_character(key);
                             PO4.setOcc(temp_occ);
+                            /*System.out.println("PO4");
+                            PO4.print();
+                            System.out.println("PO4 finished");*/
                             next_Answer2.add(PO4);
                         }
                         temp_occ = new ArrayList<>();
                     }
                 }
-                System.out.println("Next Answer2");
+                /*System.out.println("Next Answer2");
                 for (int x = 0; x < next_Answer2.size(); x++) {
                     next_Answer2.get(x).print();
                 }
-                System.out.println("Next Answer2 finished");
+                System.out.println("Next Answer2 finished");*/
                 for (int x = 0; x < next_Answer.size(); x++) { // 給下一層比對用的答案,這段是要將nextAnswer的東西尾端加上*之後丟進nextAnswer2
                     next_Answer.get(x).add_character('*');
                 /*Pattern_Occ tempPO = next_Answer.get(x);
@@ -159,6 +169,7 @@ public class Mining_Process {
                 for (int x = 0; x < next_Answer2.size(); x++) {
                     next_Answer.add(next_Answer2.get(x));
                 }
+                next_Answer2 = new ArrayList<>();
                /* System.out.println("Next Answer print");
                 for(int b = 0; b < next_Answer.size(); b++){
                     next_Answer.get(b).print();

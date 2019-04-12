@@ -46,8 +46,12 @@ public class WPM {
                 nodeMap.get(inputS.charAt(i)).add(i);
             }
         }
-
-        unique = max + 1;
+        if(nodeMap.size() > (max + 1)){
+        unique = nodeMap.size();
+        }
+        else{
+            unique = max + 1;
+        }
        // System.out.println("Size : " + unique);
     }
     public Map<Character, ArrayList<Integer>> getNodeMap(){
