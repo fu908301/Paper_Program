@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/out/production/MyCode/Mining_Process.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCode/Mining_Process.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mining_Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mining_Process.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WPM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WPM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../compare/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../compare/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../compare/Main/src/WPPM.java" beforeDir="false" afterPath="$PROJECT_DIR$/../compare/Main/src/WPPM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../compare/out/production/Main/WPPM.class" beforeDir="false" afterPath="$PROJECT_DIR$/../compare/out/production/Main/WPPM.class" afterDir="false" />
@@ -39,12 +38,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2965" />
+          <entry key="java" value="4010" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2965" />
+          <entry key="JAVA" value="4010" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -61,11 +60,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="31" column="132" selection-start-line="31" selection-start-column="132" selection-end-line="31" selection-end-column="132" />
+            <state relative-caret-position="589">
+              <caret line="31" column="133" selection-start-line="31" selection-start-column="133" selection-end-line="31" selection-end-column="133" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,11 +148,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mining_Process.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+            <state relative-caret-position="-1155">
+              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -203,8 +202,8 @@
         <option value="$PROJECT_DIR$/src/Pattern_Occ.java" />
         <option value="$PROJECT_DIR$/src/Other_Cal.java" />
         <option value="$PROJECT_DIR$/src/WPM.java" />
-        <option value="$PROJECT_DIR$/src/Mining_Process.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Mining_Process.java" />
       </list>
     </option>
   </component>
@@ -230,7 +229,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555060791644" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555582094945" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -293,7 +292,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27361563" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22909881" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.42019543" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -301,7 +300,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.2562432" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -419,20 +418,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mining_Process.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        <state relative-caret-position="589">
+          <caret line="31" column="133" selection-start-line="31" selection-start-column="133" selection-end-line="31" selection-end-column="133" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Mining_Process.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="31" column="132" selection-start-line="31" selection-start-column="132" selection-end-line="31" selection-end-column="132" />
+        <state relative-caret-position="-1155">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

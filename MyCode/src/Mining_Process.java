@@ -13,7 +13,7 @@ public class Mining_Process {
     public Mining_Process(){}
     public Mining_Process(Map<Character, Node> nodes){
         this.nodes = nodes;
-        this.periodicity = 10;
+        this.periodicity = 7;
         this.threshold = 2;
         OC = new Other_Cal();
         answer = new ArrayList<>();
@@ -76,6 +76,7 @@ public class Mining_Process {
             ArrayList<Integer> this_map_occ;
             ArrayList<Integer> temp_occ = new ArrayList<>();
             for (int i = 3; i <= periodicity; i++) { //第三層以後
+                next_level2 = new ArrayList<>();
                 count++;
                 this_map = new HashMap<>();
                 for (int j = 0; j < next_level.size(); j++) {//比對該層的OCC跟下一層的OCC能不能連結
@@ -90,12 +91,19 @@ public class Mining_Process {
                                     } else if (this_map.containsKey(next_level.get(j).getNode().getEdge().get(key).getNode().getC())) {
                                         this_map.get(next_level.get(j).getNode().getEdge().get(key).getNode().getC()).add(next_level.get(j).getNode().getEdge().get(key).getOcc().get(l) - count);
                                     }
+                                    if (next_level2.contains(next_level.get(j).getNode().getEdge().get(key))) {
+                                    } else {
+                                        next_level2.add(next_level.get(j).getNode().getEdge().get(key));
+                                    }
+                                    break;
+                                }
+                                else if (next_level.get(j).getOcc().get(k) + 1 <  next_level.get(j).getNode().getEdge().get(key).getOcc().get(0)){
+                                    break;
                                 }
                             }
                         }
                     }
                 }
-                next_level2 = new ArrayList<>();
                /* System.out.println("This Map Test");
                 for (Character key : this_map.keySet()) {
                     System.out.print(key + ":");
@@ -105,10 +113,8 @@ public class Mining_Process {
                     System.out.println();
                 }
                 System.out.println("This Map Test Finished");*/
+               //int _count = 0;
                 for (int x = 0; x < next_Answer.size(); x++) {
-                    /*System.out.println(x + " Next Answer");
-                    next_Answer.get(x).print();
-                    System.out.println("Next Answer Finish");*/
                     for (Character key : this_map.keySet()) {
                         for (int y = 0; y < next_Answer.get(x).getOcc().size(); y++) {
                             for (int z = 0; z < this_map.get(key).size(); z++) {
@@ -116,7 +122,7 @@ public class Mining_Process {
                                 int this_M = this_map.get(key).get(z);
                                 if (next_A == this_M) {
                                     temp_occ.add(this_map.get(key).get(z));
-                                    //System.out.println("NO");
+                                    break;
                                 }
                             }
                         }
@@ -155,12 +161,13 @@ public class Mining_Process {
                         temp_occ = new ArrayList<>();
                     }
                 }
+                //System.out.println(_count);
                 /*System.out.println("Next Answer2");
                 for (int x = 0; x < next_Answer2.size(); x++) {
                     next_Answer2.get(x).print();
                 }
                 System.out.println("Next Answer2 finished");*/
-                for (int x = 0; x < next_Answer.size(); x++) { // 給下一層比對用的答案,這段是要將nextAnswer的東西尾端加上*之後丟進nextAnswer2
+                for (int x = 0; x < next_Answer.size(); x++) { // 給下一層比對用的答案,這段是要將nextAnswer的東西尾端加上*
                     next_Answer.get(x).add_character('*');
                 /*Pattern_Occ tempPO = next_Answer.get(x);
                 tempPO.add_character('*');
@@ -179,48 +186,20 @@ public class Mining_Process {
                     next_Answer.get(x).print();
                 }
                 System.out.println("Next Answer finished");*/
-                for (int j = 0; j < next_level.size(); j++) {//比對該層的OCC跟下一層的OCC能不能連結
-                    for (Character key : next_level.get(j).getNode().getEdge().keySet()) { //這個是下一層node的EDGE數量
-                        for (int k = 0; k < next_level.get(j).getOcc().size(); k++) { // 這個是去跟人家比對的前一層
-                            for (int l = 0; l < next_level.get(j).getNode().getEdge().get(key).getOcc().size(); l++) { //下一層OCC的量
-                                if (next_level.get(j).getOcc().get(k) + 1 == next_level.get(j).getNode().getEdge().get(key).getOcc().get(l)) { //如果前一層的OCC+1 = 下一層的OCC
-                                    if (next_level2.contains(next_level.get(j).getNode().getEdge().get(key))) {
-                                        break;
-                                    } else {
-                                        next_level2.add(next_level.get(j).getNode().getEdge().get(key));
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
                 next_level = next_level2;
 
-            /*for(int x = 0; x < next_level.size(); x++){  //  下一層比對用的Edge, 這邊錯了,這邊是直接把下一層全部塞進去
-                for(Object key: next_level.get(x).getNode().getEdge().keySet())
-                    next_level2.add(next_level.get(x).getNode().getEdge().get(key));
-            }
-            next_level = next_level2;*/
-                /*System.out.println("Next Level:");
-                for (int a = 0; a < next_level.size(); a++) {
-                    System.out.print(next_level.get(a).getNode().getC() + " : ");
-                    for (int b = 0; b < next_level.get(a).getOcc().size(); b++) {
-                        System.out.print(next_level.get(a).getOcc().get(b) + " ");
-                    }
-                    System.out.println();
-                }*/
             }
         }
     }
 
     public void print(){
         mining_set();
-        System.out.println("Answer Print");
+        /*System.out.println("Answer Print");
         for(int i = 0; i < answer.size(); i++){
             answer.get(i).print();
         }
         System.out.println("Answer Size : " + answer.size());
-        System.out.println("Answer Print Finished");
+        System.out.println("Answer Print Finished");*/
+        System.out.println("Answer Size : " + answer.size());
     }
 }

@@ -8,13 +8,14 @@ public class WPPM {
     }
     public void WPPM_run(){
         int threshold = 2;
-        int periodicity = 10;
+        int periodicity = 7;
         Other_Cal OC = new Other_Cal();
         String input_S = input();
         ArrayList<Character> input_DB = stringToArrayList(input_S);
         ArrayList<Character> unique = getUnique(input_DB);
         Map<Character, ArrayList<Integer>> tempMap = new HashMap<>();
         //printTest(input_DB, unique, weight);
+
         trie = new SuffixTrie();
         trie.build(input_S);
         Node root = trie.getRoot();
@@ -89,7 +90,7 @@ public class WPPM {
                 next_answer2 = new ArrayList<>();
                 Pattern_Occ tempPO;
                 Pattern_Occ tempPO2;
-                for(int k = 0; k < next_answer.size(); k++){ //這邊是結合上一層與下一層的OCC,這邊的結合有問題
+                for(int k = 0; k < next_answer.size(); k++){ //這邊是結合上一層與下一層的OCC
                     for(Character key3 : tempMap.keySet()){
                         tempPO = new Pattern_Occ();
                         for(int z = 0; z < next_answer.get(k).getPattern().size(); z++){
@@ -159,12 +160,13 @@ public class WPPM {
                 next_level = next_level2;
             }
         }
-        System.out.println("Answer print.");
+        /*System.out.println("Answer print.");
         for(int z = 0; z < answer.size(); z++){
             answer.get(z).print();
         }
         System.out.println("Answer Size : " + answer.size());
-        System.out.println("Answer print finised.");
+        System.out.println("Answer print finised.");*/
+        System.out.println("Answer Size : " + answer.size());
         /*for (Object key : root.getChildren().keySet()){
             Node nextNode = root.getChildren().get(key);
             double test = getMaxWeight(nextNode);
@@ -201,7 +203,7 @@ public class WPPM {
         String input_S = new String();
         try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data2.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();
