@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class SuffixTrie implements Trie{
     private Node root = null;
     private int symbolAccount = 0;
+    private long count = 0;
 
     public SuffixTrie(){
         root = new BranchNode(' ');

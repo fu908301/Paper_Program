@@ -7,14 +7,16 @@ public class Mining_Process {
     private Node node_now;
     private int periodicity;
     private int threshold;
+    private int star_limit;
     private ArrayList<Pattern_Occ> answer;
     private ArrayList<Character> temp_answer;
     private Other_Cal OC;
     public Mining_Process(){}
     public Mining_Process(Map<Character, Node> nodes){
         this.nodes = nodes;
-        this.periodicity = 7;
+        this.periodicity = 5;
         this.threshold = 2;
+        this.star_limit = 3;
         OC = new Other_Cal();
         answer = new ArrayList<>();
     }
@@ -72,7 +74,7 @@ public class Mining_Process {
                 System.out.println();
             }
             System.out.println("Next Level finished");*/
-            Map<Character, ArrayList<Integer>> this_map = new HashMap<>();
+            Map<Character, ArrayList<Integer>> this_map;
             ArrayList<Integer> this_map_occ;
             ArrayList<Integer> temp_occ = new ArrayList<>();
             for (int i = 3; i <= periodicity; i++) { //第三層以後
@@ -161,31 +163,21 @@ public class Mining_Process {
                         temp_occ = new ArrayList<>();
                     }
                 }
-                //System.out.println(_count);
-                /*System.out.println("Next Answer2");
-                for (int x = 0; x < next_Answer2.size(); x++) {
-                    next_Answer2.get(x).print();
+                for(int x = 0; x < next_Answer.size(); x++){
+                    Pattern_Occ tempPO3 = new Pattern_Occ();
+                    for(int z = 0; z < next_Answer.get(x).getPattern().size(); z++){
+                        tempPO3.add_character(next_Answer.get(x).getPattern().get(z));
+                    }
+                    tempPO3.add_character('*');
+                    for(int z = 0; z < next_Answer.get(x).getOcc().size(); z++){
+                        tempPO3.addOcc(next_Answer.get(x).getOcc().get(z));
+                    }
+                    if(tempPO3.star_count() <= star_limit) {
+                        next_Answer2.add(tempPO3);
+                    }
                 }
-                System.out.println("Next Answer2 finished");*/
-                for (int x = 0; x < next_Answer.size(); x++) { // 給下一層比對用的答案,這段是要將nextAnswer的東西尾端加上*
-                    next_Answer.get(x).add_character('*');
-                /*Pattern_Occ tempPO = next_Answer.get(x);
-                tempPO.add_character('*');
-                next_Answer2.add(tempPO);*/
-                }
-                for (int x = 0; x < next_Answer2.size(); x++) {
-                    next_Answer.add(next_Answer2.get(x));
-                }
+                next_Answer = next_Answer2;
                 next_Answer2 = new ArrayList<>();
-               /* System.out.println("Next Answer print");
-                for(int b = 0; b < next_Answer.size(); b++){
-                    next_Answer.get(b).print();
-                }*/
-                /*System.out.println("Next Answer");
-                for (int x = 0; x < next_Answer.size(); x++) {
-                    next_Answer.get(x).print();
-                }
-                System.out.println("Next Answer finished");*/
                 next_level = next_level2;
 
             }

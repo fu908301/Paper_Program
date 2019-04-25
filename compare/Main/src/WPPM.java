@@ -7,14 +7,14 @@ public class WPPM {
     public WPPM(){
     }
     public void WPPM_run(){
+        int star_limit = 3;
         int threshold = 2;
-        int periodicity = 7;
+        int periodicity = 5;
         Other_Cal OC = new Other_Cal();
         String input_S = input();
         ArrayList<Character> input_DB = stringToArrayList(input_S);
         ArrayList<Character> unique = getUnique(input_DB);
         Map<Character, ArrayList<Integer>> tempMap = new HashMap<>();
-        //printTest(input_DB, unique, weight);
 
         trie = new SuffixTrie();
         trie.build(input_S);
@@ -77,16 +77,6 @@ public class WPPM {
                         }
                     }
                 }
-                /*System.out.println("temp test");
-                for(Object x : tempMap.keySet()){
-                    System.out.println(x  + ":" +  tempMap.get(x));
-                }
-                System.out.println("temp finish");
-                System.out.println("next answer test");
-                for(int z = 0; z < next_answer.size(); z++){
-                    next_answer.get(z).print();
-                }
-                System.out.println("next answer finish");*/
                 next_answer2 = new ArrayList<>();
                 Pattern_Occ tempPO;
                 Pattern_Occ tempPO2;
@@ -126,16 +116,6 @@ public class WPPM {
                         }
                     }
                 }
-               /* System.out.println("Answer print");
-                for(int c = 0; c < answer.size(); c++){
-                    answer.get(c).print();
-                }
-                System.out.println("Answer print finish");
-                System.out.println("Next Answer2 print");
-                for(int c = 0; c < next_answer2.size(); c++){
-                    next_answer2.get(c).print();
-                }
-                System.out.println("Next Answer2 print finish");*/
 
                 for(int x = 0; x < next_answer.size(); x++){
                     Pattern_Occ tempPO3 = new Pattern_Occ();
@@ -146,7 +126,10 @@ public class WPPM {
                     for(int z = 0; z < next_answer.get(x).getOcc().size(); z++){
                         tempPO3.addOcc(next_answer.get(x).getOcc().get(z));
                     }
-                    next_answer2.add(tempPO3);
+                    if(tempPO3.star_count() <= star_limit) {
+                        next_answer2.add(tempPO3);
+                    }
+                    //next_answer2.add(tempPO3);
                 }
                 next_answer = next_answer2;
                 ArrayList<Node> next_level2 = new ArrayList<>();
@@ -165,45 +148,25 @@ public class WPPM {
             answer.get(z).print();
         }
         System.out.println("Answer Size : " + answer.size());
-        System.out.println("Answer print finised.");*/
+        System.out.println("Answer print finished.");*/
         System.out.println("Answer Size : " + answer.size());
-        /*for (Object key : root.getChildren().keySet()){
-            Node nextNode = root.getChildren().get(key);
-            double test = getMaxWeight(nextNode);
-            Periodicity_detection tempPD = new Periodicity_detection(nextNode.getOcc_vec(), nextNode.getOcc_vec().size(), 1, input_S.length());
-            ArrayList<occ_period> ST1 = tempPD.getOP();
-            if(ST1.size() * test >= threshold){
-                C.clear();
-                C.put(nextNode.getC(),ST1);
-                len_vec = trie.len_vec(nextNode, len_vec);
-                LadderFactor = _LadderFactor(len_vec);
-                CN = union(CN, nextNode);
-                while(LadderFactor > 0){
-                    N.clear();
-                    for(int i = 0; i < CN.size(); i++){
-                        Node thisNode = CN.get(i);
-                        for (Object key2 : thisNode.getChildren().keySet()){
-                            Node thisNode2 = thisNode.getChildren().get(key2);
-                            if(joinable(thisNode, nextNode)){
-                                //PT1 =
-                            }
-                        }
-                    }
-                    LadderFactor--;
-                }
-            }
-            System.out.println(key);
-            for(int i = 0; i < ST1.size(); i++){
-                ST1.get(i).print();
-            }
-        }*/
 
     }
     private String input(){
-        String input_S = new String();
+        String input_S = "";
         try{
+            FileReader FR = new FileReader("C://Users//AndyFu//Desktop//Paper_code//compare//test.txt");
+            BufferedReader BR = new BufferedReader(FR);
+            while (BR.ready()){
+                input_S = input_S + BR.readLine();
+            }
+            FR.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        /*try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data2.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data3.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();
@@ -221,7 +184,7 @@ public class WPPM {
             e.fillInStackTrace();
         }catch (NumberFormatException e) {
             System.out.println(" parse int error!! " + e);
-        }
+        }*/
         return input_S;
     }
 
@@ -245,44 +208,44 @@ public class WPPM {
 
     private char change(double input){
         char _return = 'x';
-        if(input >= 25 && input < 30){
-            _return = 'm';
-        }
-        if(input >= 30 && input < 35){
-            _return = 'l';
-        }
-        if(input >= 35 && input < 40){
-            _return = 'k';
-        }
-        if(input >= 40 && input < 45){
-            _return = 'j';
-        }
-        if(input >= 45 && input < 50){
-            _return = 'i';
-        }
-        if(input >= 50 && input < 55){
+        if(input >= 10 && input < 20){
             _return = 'a';
         }
-        else if (input >= 55 && input < 60){
+        else if (input >= 20 && input < 30){
             _return = 'b';
         }
-        else if (input >= 60 && input < 65){
+        else if (input >= 30 && input < 40){
             _return = 'c';
         }
-        else if (input >= 65 && input < 70){
+        else if (input >= 40 && input < 50){
             _return = 'd';
         }
-        else if (input >= 70 && input < 75){
+        else if (input >= 50 && input < 60){
             _return = 'e';
         }
-        else if (input >= 75 && input < 80){
+        else if (input >= 60 && input < 70){
             _return = 'f';
         }
-        else if (input >= 80 && input < 85){
+        else if (input >= 70 && input < 80){
             _return = 'g';
         }
-        else if (input >= 85 && input < 90){
+        else if (input >= 80 && input < 90){
             _return = 'h';
+        }
+        else if(input >= 90 && input < 100){
+            _return = 'i';
+        }
+        else if(input >= 100 && input < 110){
+            _return = 'j';
+        }
+        else if(input >= 110 && input < 120){
+            _return = 'k';
+        }
+        else if(input >= 120 && input < 130){
+            _return = 'l';
+        }
+        else if(input >= 130 && input < 140){
+            _return = 'm';
         }
         return _return;
     }

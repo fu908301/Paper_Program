@@ -53,6 +53,22 @@ public class Pattern_Occ {
     public ArrayList<Integer> getOcc() {
         return Occ;
     }
+    public int star_count(){
+        int count = 0;
+        int max_count = 0;
+        for(int i = 0; i < pattern.size(); i++){
+            if(pattern.get(i) == '*'){
+                count++;
+            }
+            if((count > 0 && pattern.get(i) != '*') || (count > 0 && i == pattern.size() - 1 && pattern.get(i) == '*')){
+                if(count > max_count){
+                    max_count = count;
+                }
+                count = 0;
+            }
+        }
+        return max_count;
+    }
     public void print(){
         for(int i = 0; i < pattern.size(); i++){
             System.out.print(pattern.get(i));
