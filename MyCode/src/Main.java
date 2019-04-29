@@ -9,7 +9,7 @@ public class Main {
         //Scanner input = new Scanner(System.in);
         //String str = input.next();
         long time1 = System.currentTimeMillis();
-        //output();
+        output();
         String str = input();
         WPM testWPM = new WPM(str);
         ArrayList<ArrayList<Occ_Weight>> WPM = testWPM.getWPM();
@@ -23,7 +23,7 @@ public class Main {
     private static String input(){
         String input_S = "";
         try{
-            FileReader FR = new FileReader("C://Users//AndyFu//Desktop//Paper_code//compare//test.txt");
+            FileReader FR = new FileReader("C://Users//Andy//Desktop//PaperCode//Paper_Program//test.txt");
             BufferedReader BR = new BufferedReader(FR);
             while (BR.ready()){
                 input_S = input_S + BR.readLine();
@@ -101,12 +101,12 @@ public class Main {
     }
     public static void output(){
         try {
-            FileWriter FW = new FileWriter("C://Users//AndyFu//Desktop//Paper_code//compare//test.txt");
+            FileWriter FW = new FileWriter("C://Users//Andy//Desktop//PaperCode//Paper_Program//test.txt");
             String S = "";
             Random ran = new Random();
             Other_Cal OC = new Other_Cal();
-            for(int x = 0; x < 3000; x++) {
-                int i = ran.nextInt(5);
+            for(int x = 0; x < 2000; x++) {
+                int i = ran.nextInt(4);
                 char c = OC.IntToChar(i);
                 S = S + Character.toString(c);
             }

@@ -2,15 +2,15 @@ import java.util.*;
 public class Periodicity_detection {
     private ArrayList<Integer> occ;
     private int size;
-    private int threshold;
+    private double threshold;
     private int length;
     private ArrayList<Integer> V;
     private ArrayList<occ_period> OP;
 
     Periodicity_detection(){
     }
-    Periodicity_detection(ArrayList<Integer> occ,int size, int threshold, int length){
-        this.size = size;
+    Periodicity_detection(ArrayList<Integer> occ, double threshold, int length){
+        this.size = occ.size();
         this.occ = occ;
         this.threshold = threshold;
         this.length = length;
@@ -19,20 +19,21 @@ public class Periodicity_detection {
     }
 
     public void algorithm(){
-        int st, sigma, period, PP, support,s_loop = 0, t_loop = 0;
+        int st, sigma, period, PP,s_loop = 0, t_loop = 0;
+        double support;
         boolean _break = false;
         occ_period tempOP;
         for (int i = 1; i <= size - 1; i++){
             st = occ.get(i - 1);
             for(int j = i; j <= size - 1; j++){
-                _break = false;
+                //_break = false;
                 sigma = occ.get(j);
                 period = sigma - st;
-                if(threshold*(length-st+1)/period > size)
+                if(period > 20){
                     break;
-                if(OP.size() == 0){
-                    System.out.println("Continue");
                 }
+                /*if(threshold*(length-st+1)/period > size)
+                    break;
                 else{
                     for(int temp = 0; temp < OP.size(); temp++){
                         if(period == OP.get(temp).getPeriod()){
@@ -45,7 +46,7 @@ public class Periodicity_detection {
                 }
                 if(_break) {
                     break;
-                }
+                }*/
                 s_loop++;
                 V.clear();
                 V.add(st);
@@ -57,7 +58,8 @@ public class Periodicity_detection {
                     }
                 }
                 PP = (length - st + 1) / period;
-                support = V.size() / PP;
+                double D_PP = (double)PP, D_V = (double)V.size();
+                support = D_V / D_PP;
                 if(support >= threshold){
                     tempOP = new occ_period();
                     tempOP.setPeriod(period);
@@ -66,8 +68,8 @@ public class Periodicity_detection {
                 }
             }
         }
-        System.out.println("Second loop " + s_loop);
-        System.out.println("Third loop " + t_loop);
+        //System.out.println("Second loop " + s_loop);
+        //System.out.println("Third loop " + t_loop);
     }
     public void print(){
        for(int i = 0; i < OP.size(); i++){
