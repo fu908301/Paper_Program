@@ -105,7 +105,7 @@ public class Main {
             String S = "";
             Random ran = new Random();
             Other_Cal OC = new Other_Cal();
-            for(int x = 0; x < 3300; x++) {
+            for(int x = 0; x < 3000; x++) {
                 int i = ran.nextInt(5);
                 char c = OC.IntToChar(i);
                 S = S + Character.toString(c);

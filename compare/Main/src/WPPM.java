@@ -9,7 +9,7 @@ public class WPPM {
     public void WPPM_run(){
         int star_limit = 3;
         int threshold = 2;
-        int periodicity = 5;
+        int periodicity = 7;
         Other_Cal OC = new Other_Cal();
         String input_S = input();
         ArrayList<Character> input_DB = stringToArrayList(input_S);
