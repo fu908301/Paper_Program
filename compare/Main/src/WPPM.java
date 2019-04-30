@@ -9,7 +9,7 @@ public class WPPM {
     public void WPPM_run(){
         int star_limit = 3;
         int threshold = 2;
-        int periodicity = 16;
+        int periodicity = 12;
         Other_Cal OC = new Other_Cal();
         String input_S = input();
         ArrayList<Character> input_DB = stringToArrayList(input_S);
@@ -160,19 +160,19 @@ public class WPPM {
                 }
             }
         }
-        System.out.println("Answer print.");
+        /*System.out.println("Answer print.");
         for(int z = 0; z < answer.size(); z++){
             answer.get(z).print();
         }
         System.out.println("Answer Size : " + answer.size());
-        System.out.println("Answer print finished.");
+        System.out.println("Answer print finished.");*/
         System.out.println("Answer Size : " + answer.size());
 
     }
     private String input(){
         String input_S = "";
         try{
-            FileReader FR = new FileReader("C://Users//Andy//Desktop//PaperCode//Paper_Program//test.txt");
+            FileReader FR = new FileReader("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//test.txt");
             BufferedReader BR = new BufferedReader(FR);
             while (BR.ready()){
                 input_S = input_S + BR.readLine();

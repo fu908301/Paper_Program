@@ -9,21 +9,21 @@ public class Main {
         //Scanner input = new Scanner(System.in);
         //String str = input.next();
         long time1 = System.currentTimeMillis();
-        output();
+        //output();
         String str = input();
         WPM testWPM = new WPM(str);
         ArrayList<ArrayList<Occ_Weight>> WPM = testWPM.getWPM();
         WDG testWDG = new WDG(testWPM.getNodeMap());
         Map<Character, Node> nodes = testWDG.getNode(WPM);
-        Mining_Process MP = new Mining_Process(nodes);
+        Mining_Process MP = new Mining_Process(nodes,str.length());
         MP.print();
         long time2 = System.currentTimeMillis();
         System.out.println("Time : " + (time2 - time1));
     }
     private static String input(){
         String input_S = "";
-        try{
-            FileReader FR = new FileReader("C://Users//Andy//Desktop//PaperCode//Paper_Program//test.txt");
+        /*try{
+            FileReader FR = new FileReader("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//test.txt");
             BufferedReader BR = new BufferedReader(FR);
             while (BR.ready()){
                 input_S = input_S + BR.readLine();
@@ -31,10 +31,10 @@ public class Main {
             FR.close();
         }catch (IOException e){
             e.printStackTrace();
-        }
-        /*try{
+        }*/
+        try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data3.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//Data.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();
@@ -52,7 +52,7 @@ public class Main {
             e.fillInStackTrace();
         }catch (NumberFormatException e) {
             System.out.println(" parse int error!! " + e);
-        }*/
+        }
         return input_S;
     }
 
@@ -101,7 +101,7 @@ public class Main {
     }
     public static void output(){
         try {
-            FileWriter FW = new FileWriter("C://Users//Andy//Desktop//PaperCode//Paper_Program//test.txt");
+            FileWriter FW = new FileWriter("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//test.txt");
             String S = "";
             Random ran = new Random();
             Other_Cal OC = new Other_Cal();
