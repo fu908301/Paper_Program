@@ -6,7 +6,7 @@ public class Mining_Process {
     private Map<Character, Node> nodes;
     private Node node_now;
     private int periodicity;
-    private int threshold;
+    private double threshold;
     private int star_limit;
     private int length;
     private ArrayList<Pattern_Occ> answer;
@@ -17,7 +17,7 @@ public class Mining_Process {
         this.length = length;
         this.nodes = nodes;
         this.periodicity = 8;
-        this.threshold = 2;
+        this.threshold = 2.0;
         this.star_limit = 3;
         OC = new Other_Cal();
         answer = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Mining_Process {
             ArrayList<Pattern_Occ> next_Answer = new ArrayList<>(); //下一層比對的答案
             ArrayList<Pattern_Occ> next_Answer2 = new ArrayList<>();
             if(have) {
-                if (PD_Occ.size() * OC.getWeight(node_now.getC()) >= threshold) { //First level
+                if ((double)PD_Occ.size() * OC.getWeight(node_now.getC()) >= threshold) { //First level
                     PO = new Pattern_Occ(); //給新的PO
                     PO.add_character(node_now.getC()); //加入起始點的character
                     PO.setOcc(PD_Occ); //加入起始點的OCC_VEC
@@ -85,7 +85,8 @@ public class Mining_Process {
                     }
                     next_level.add(node_now.getEdge().get(key)); //下一層的edge放進去
                     tempWeight = (OC.getWeight(node_now.getC()) + OC.getWeight(node_now.getEdge().get(key).getNode().getC())) / 2;
-                    if (tempWeight * PO.getOcc().size() >= threshold) {
+                    double size = (double)PO.getOcc().size();
+                    if (tempWeight * size >= threshold) {
                         answer.add(PO); //如果超過門檻,加入答案
                         next_Answer.add(PO2);//下一次的Mining用到
                     }
@@ -168,7 +169,7 @@ public class Mining_Process {
                             next_Answer.get(x).print();
                         }
                         System.out.println("OCC : " + temp_occ);*/
-                            if (weight * temp_occ.size() >= threshold) {
+                            if (weight * (double)temp_occ.size() >= threshold) {
                                 Pattern_Occ PO5 = new Pattern_Occ();
                                 ArrayList<Character> tempPattern2 = new ArrayList<>();
                                 for (int z = 0; z < next_Answer.get(x).getPattern().size(); z++) {

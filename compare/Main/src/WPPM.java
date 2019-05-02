@@ -8,8 +8,8 @@ public class WPPM {
     }
     public void WPPM_run(){
         int star_limit = 3;
-        int threshold = 2;
-        int periodicity = 12;
+        double threshold = 2.0;
+        int periodicity = 8;
         Other_Cal OC = new Other_Cal();
         String input_S = input();
         ArrayList<Character> input_DB = stringToArrayList(input_S);
@@ -44,7 +44,7 @@ public class WPPM {
             }
             //PD.print();
             if(have) {
-                if (PD_Occ.size() * OC.getWeight(key.charAt(0)) >= threshold) { //如果第一層有過門檻
+                if ((double)PD_Occ.size() * OC.getWeight(key.charAt(0)) >= threshold) { //如果第一層有過門檻
                     Pattern_Occ PO = new Pattern_Occ();
                     PO.add_character(nextNode.getC());
                     PO.setOcc(PD_Occ);
@@ -123,7 +123,7 @@ public class WPPM {
                         /*System.out.println("TEMP");
                         tempPO.print();
                         System.out.println("TEMP FINISH");*/
-                            if (tempPO.getOcc().size() * tempPO.average_weight() >= threshold) {
+                            if ((double)tempPO.getOcc().size() * tempPO.average_weight() >= threshold) {
                             /*System.out.println("TEMP PO");
                             tempPO.print();
                             tempPO2.print();*/
@@ -170,8 +170,8 @@ public class WPPM {
 
     }
     private String input(){
-        String input_S = "";
-        try{
+        String input_S = bike();
+        /*try{
             FileReader FR = new FileReader("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//test.txt");
             BufferedReader BR = new BufferedReader(FR);
             while (BR.ready()){
@@ -180,10 +180,15 @@ public class WPPM {
             FR.close();
         }catch (IOException e){
             e.printStackTrace();
-        }
-        /*try{
+        }*/
+
+        return input_S;
+    }
+    private String oil(){
+        String input_S="";
+        try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//compare//Data3.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//Data9Y.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();
@@ -201,10 +206,38 @@ public class WPPM {
             e.fillInStackTrace();
         }catch (NumberFormatException e) {
             System.out.println(" parse int error!! " + e);
-        }*/
+        }
         return input_S;
     }
 
+    private  String bike(){
+        String input_S = "";
+        try{
+            char c;
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//Paper_Program/bikedata//bike_sharing_hourly.csv"));
+            BufferedReader reader = new BufferedReader(isr);
+            String line = null;
+            reader.readLine();
+            int x = 0;
+            while(x < 3000){
+                line = reader.readLine();
+                String item[] = line.split(",");
+                String convert = item[16].replace("\"", "");
+                double num = Double.parseDouble(convert);
+                c = change2(num);
+                //System.out.println(num);
+                input_S = Character.toString(c) + input_S;
+                x++;
+            }
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.fillInStackTrace();
+        }catch (NumberFormatException e) {
+            System.out.println(" parse int error!! " + e);
+        }
+        return input_S;
+    }
     private ArrayList<Character> stringToArrayList(String input){
         ArrayList<Character> tempArrayList = new ArrayList<>();
         for(int i = 0; i < input.length(); i++){
@@ -262,6 +295,50 @@ public class WPPM {
             _return = 'l';
         }
         else if(input >= 130 && input < 140){
+            _return = 'm';
+        }
+        return _return;
+    }
+
+    private static char change2(double input){
+        char _return = 'x';
+        if(input < 20){
+            _return = 'a';
+        }
+        else if (input >= 20 && input < 40){
+            _return = 'b';
+        }
+        else if (input >= 40 && input < 60){
+            _return = 'c';
+        }
+        else if (input >= 60 && input < 80){
+            _return = 'd';
+        }
+        else if (input >= 80 && input < 100){
+            _return = 'e';
+        }
+        else if (input >= 100 && input < 120){
+            _return = 'f';
+        }
+        else if (input >= 120 && input < 140){
+            _return = 'g';
+        }
+        else if (input >= 140 && input < 160){
+            _return = 'h';
+        }
+        else if(input >= 160 && input < 180){
+            _return = 'i';
+        }
+        else if(input >= 180 && input < 200){
+            _return = 'j';
+        }
+        else if(input >= 200 && input < 220){
+            _return = 'k';
+        }
+        else if(input >= 220 && input < 240){
+            _return = 'l';
+        }
+        else if(input >= 240){
             _return = 'm';
         }
         return _return;
