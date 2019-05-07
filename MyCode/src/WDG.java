@@ -78,6 +78,7 @@ public class WDG {
                     }
                     if(firstNode.getEdge().get(y) != null){
                         occ = outWPM.get(i).get(j).getOcc();
+                        System.out.println(firstNode.getC() + "" + y + occ);
                         for(int z = 0; z < occ.size(); z++){
                             firstNode.getEdge().get(y).addOcc(occ.get(z));
                         }

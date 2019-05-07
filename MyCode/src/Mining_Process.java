@@ -16,7 +16,7 @@ public class Mining_Process {
     public Mining_Process(Map<Character, Node> nodes, int length){
         this.length = length;
         this.nodes = nodes;
-        this.periodicity = 8;
+        this.periodicity = 4;
         this.threshold = 2.0;
         this.star_limit = 3;
         OC = new Other_Cal();
@@ -223,12 +223,12 @@ public class Mining_Process {
 
     public void print(){
         mining_set();
-        /*System.out.println("Answer Print");
+        System.out.println("Answer Print");
         for(int i = 0; i < answer.size(); i++){
             answer.get(i).print();
         }
         System.out.println("Answer Size : " + answer.size());
-        System.out.println("Answer Print Finished");*/
+        System.out.println("Answer Print Finished");
         System.out.println("Answer Size : " + answer.size());
     }
 }

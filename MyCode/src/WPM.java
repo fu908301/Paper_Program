@@ -23,6 +23,13 @@ public class WPM {
         OC = new Other_Cal();
         nodeMap = new HashMap<>();
     }
+    public WPM(String inputS, int count, Map<Character, ArrayList<Integer>> nodeMap){
+        this.count = count;
+        outWPM = new ArrayList<>();
+        this.inputS = inputS;
+        OC = new Other_Cal();
+        this.nodeMap = nodeMap;
+    }
 
     public void setInput(String inputS){
         this.inputS = inputS;
@@ -43,11 +50,16 @@ public class WPM {
             if(!nodeMap.containsKey(inputS.charAt(i))){
                 tempOcc = new ArrayList<>();
                 int put = i + count;
+                System.out.println(inputS.charAt(i) + " " + put);
                 tempOcc.add(put);
                 nodeMap.put(inputS.charAt(i), tempOcc);
             } else {
                 int put = i + count;
-                nodeMap.get(inputS.charAt(i)).add(put);
+                System.out.println(inputS.charAt(i) + " " + put);
+                ArrayList<Integer> occ = nodeMap.get(inputS.charAt(i));
+                if(!occ.contains(put)){
+                    nodeMap.get(inputS.charAt(i)).add(put);
+                }
             }
         }
         if(nodeMap.size() > (max + 1)){
@@ -61,7 +73,7 @@ public class WPM {
     public Map<Character, ArrayList<Integer>> getNodeMap(){
         return nodeMap;
     }
-    private void printnodeMap(){
+    public void printnodeMap(){
         System.out.println("Node Map Test");
         for(Object key : nodeMap.keySet()){
             System.out.print(key + " : ");
@@ -112,7 +124,6 @@ public class WPM {
     }
 
     public void print(){
-        setWPM();
         for(int i = 0; i < unique; i++){
             for(int j = 0; j < unique; j++){
                 if(outWPM.get(i).get(j).getWeight() != 0){
