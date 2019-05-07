@@ -9,13 +9,15 @@ public class WPM {
     private Map<Character, ArrayList<Integer>> nodeMap;
     private int unique; //看字串中有多少不同的字元
     private Other_Cal OC;
+    private int count;
     public WPM(){
         outWPM = new ArrayList<>();
         OC = new Other_Cal();
         nodeMap = new HashMap<>();
     }
 
-    public WPM(String inputS){
+    public WPM(String inputS, int count){
+        this.count = count;
         outWPM = new ArrayList<>();
         this.inputS = inputS;
         OC = new Other_Cal();
@@ -40,14 +42,16 @@ public class WPM {
 
             if(!nodeMap.containsKey(inputS.charAt(i))){
                 tempOcc = new ArrayList<>();
-                tempOcc.add(i);
+                int put = i + count;
+                tempOcc.add(put);
                 nodeMap.put(inputS.charAt(i), tempOcc);
             } else {
-                nodeMap.get(inputS.charAt(i)).add(i);
+                int put = i + count;
+                nodeMap.get(inputS.charAt(i)).add(put);
             }
         }
         if(nodeMap.size() > (max + 1)){
-        unique = nodeMap.size();
+            unique = nodeMap.size();
         }
         else{
             unique = max + 1;
@@ -89,10 +93,12 @@ public class WPM {
             //System.out.println("X Y = " + x + " " + y + " = " + inputS.charAt(i) + " " + inputS.charAt(i+1));
             weight = (OC.getWeight(inputS.charAt(i)) + OC.getWeight(inputS.charAt(i+1))) / 2;
             if(outWPM.get(x).get(y).getWeight() == 0) {
-                outWPM.get(x).get(y).set_All(weight, i);
+                int put = i + count;
+                outWPM.get(x).get(y).set_All(weight, put);
             }
             else {
-                outWPM.get(x).get(y).setOcc(i);
+                int put = i + count;
+                outWPM.get(x).get(y).setOcc(put);
             }
             //outWPM.get(x).get(y).print();
             //System.out.println();

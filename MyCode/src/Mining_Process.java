@@ -32,6 +32,7 @@ public class Mining_Process {
             PD_Occ = new ArrayList<>();
             boolean have = false;
             node_now = nodes.get(keys);//之後加迴圈去跑
+
             PD = new Periodicity_detection(node_now.getOcc(), 0.5, length);
             after_PD = PD.getOP();
             for(int  i = 0; i < after_PD.size(); i++){

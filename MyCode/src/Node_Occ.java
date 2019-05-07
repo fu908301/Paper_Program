@@ -16,6 +16,9 @@ public class Node_Occ {
         check = true;
     }
 
+    public void addOcc(Integer input){
+        this.occ.add(input);
+    }
     public void setOcc(ArrayList<Integer> occ){
         this.occ = occ;
     }

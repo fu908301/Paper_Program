@@ -10,8 +10,8 @@ public class Periodicity_detection {
     Periodicity_detection(){
     }
     Periodicity_detection(ArrayList<Integer> occ, double threshold, int length){
-        this.size = occ.size();
         this.occ = occ;
+        this.size = occ.size();
         this.threshold = threshold;
         this.length = length;
         V = new ArrayList<>();

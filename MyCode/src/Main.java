@@ -11,17 +11,36 @@ public class Main {
         long time1 = System.currentTimeMillis();
         //output();
         String str = input();
-        WPM testWPM = new WPM(str);
+        String str1 = "";
+        for(int i = 0; i < 250; i++){
+            str1 = Character.toString(str.charAt(i)) + str1;
+        }
+
+        WPM testWPM = new WPM(str1, 0);
         ArrayList<ArrayList<Occ_Weight>> WPM = testWPM.getWPM();
+        //testWPM.print();
         WDG testWDG = new WDG(testWPM.getNodeMap());
         Map<Character, Node> nodes = testWDG.getNode(WPM);
-        Mining_Process MP = new Mining_Process(nodes,str.length());
+        Mining_Process MP = new Mining_Process(nodes, str1.length());
         MP.print();
+
+        String str2 = "";
+        for(int i = 249; i < 500; i++){
+            str2 = Character.toString(str.charAt(i)) + str2;
+        }
+        WPM testWPM2 = new WPM(str2, 249); // WPM設定上有點問題，要再看問題出在哪
+        ArrayList<ArrayList<Occ_Weight>> WPM2 = testWPM2.getWPM();
+        //testWPM2.print();
+        testWDG.setNodeMap(testWPM2.getNodeMap());
+        nodes = testWDG.getincremental(WPM2);
+        Mining_Process MP2 = new Mining_Process(nodes, (str1.length() + str2.length() - 1));
+        MP2.print();
+
         long time2 = System.currentTimeMillis();
         System.out.println("Time : " + (time2 - time1));
     }
     private static String input(){
-        String input_S = bike();
+        String input_S = oil();
         /*try{
             FileReader FR = new FileReader("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//test.txt");
             BufferedReader BR = new BufferedReader(FR);
@@ -69,7 +88,7 @@ public class Main {
             String line = null;
             reader.readLine();
             int x = 0;
-            while(x < 3000){
+            while(x < 2000){
                 line = reader.readLine();
                 String item[] = line.split(",");
                 String convert = item[16].replace("\"", "");
