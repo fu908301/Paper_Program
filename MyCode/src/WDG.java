@@ -78,7 +78,7 @@ public class WDG {
                     }
                     if(firstNode.getEdge().get(y) != null){
                         occ = outWPM.get(i).get(j).getOcc();
-                        System.out.println(firstNode.getC() + "" + y + occ);
+                        //System.out.println(firstNode.getC() + "" + y + occ);
                         for(int z = 0; z < occ.size(); z++){
                             firstNode.getEdge().get(y).addOcc(occ.get(z));
                         }
@@ -99,9 +99,6 @@ public class WDG {
     }
     public Map<Character, Node> getincremental(ArrayList<ArrayList<Occ_Weight>> outWPM){ // 一次回傳全部node
         incremental(outWPM);
-        for(Object keys : tempNode.keySet()){
-            System.out.println(keys + " " + tempNode.get(keys).getOcc());
-        }
         return tempNode;
     }
 

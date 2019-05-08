@@ -16,7 +16,7 @@ public class Mining_Process {
     public Mining_Process(Map<Character, Node> nodes, int length){
         this.length = length;
         this.nodes = nodes;
-        this.periodicity = 4;
+        this.periodicity = 8;
         this.threshold = 2.0;
         this.star_limit = 3;
         OC = new Other_Cal();

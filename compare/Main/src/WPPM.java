@@ -11,7 +11,11 @@ public class WPPM {
         double threshold = 2.0;
         int periodicity = 8;
         Other_Cal OC = new Other_Cal();
-        String input_S = input();
+        String input = input();
+        String input_S = "";
+        for(int i = 0; i < 1000; i++){   //i = 0 to n
+            input_S = input_S + Character.toString(input.charAt(i));
+        }
         ArrayList<Character> input_DB = stringToArrayList(input_S);
         ArrayList<Character> unique = getUnique(input_DB);
         Map<Character, ArrayList<Integer>> tempMap = new HashMap<>();
@@ -170,7 +174,7 @@ public class WPPM {
 
     }
     private String input(){
-        String input_S = bike();
+        String input_S = oil();
         /*try{
             FileReader FR = new FileReader("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//test.txt");
             BufferedReader BR = new BufferedReader(FR);
@@ -188,7 +192,7 @@ public class WPPM {
         String input_S="";
         try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//Data9Y.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//Data7Y.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();

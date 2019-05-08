@@ -12,24 +12,25 @@ public class Main {
         //output();
         String str = input();
         String str1 = "";
-        for(int i = 0; i < 8; i++){
+        for(int i = 0; i < 500; i++){   //i = 0 to n
             str1 = str1 + Character.toString(str.charAt(i));
         }
 
         WPM testWPM = new WPM(str1, 0);
         ArrayList<ArrayList<Occ_Weight>> WPM = testWPM.getWPM();
         //testWPM.print();
-        testWPM.printnodeMap();
+        //testWPM.printnodeMap();
         WDG testWDG = new WDG(testWPM.getNodeMap());
         Map<Character, Node> nodes = testWDG.getincremental(WPM);
         Mining_Process MP = new Mining_Process(nodes, str1.length());
         MP.print();
 
         String str2 = "";
-        for(int i = 7; i < 16; i++){
+        int count = 499;
+        for(int i = count; i < 1000; i++){   //i = n-1 to m
             str2 = str2 + Character.toString(str.charAt(i));
         }
-        WPM testWPM2 = new WPM(str2, 7, testWPM.getNodeMap()); // WPM設定上有點問題，要再看問題出在哪
+        WPM testWPM2 = new WPM(str2, count, testWPM.getNodeMap()); // count = n-1
         ArrayList<ArrayList<Occ_Weight>> WPM2 = testWPM2.getWPM();
         testWDG.setNodeMap(testWPM2.getNodeMap());
         nodes = testWDG.getincremental(WPM2);
@@ -41,9 +42,9 @@ public class Main {
         System.out.println("Time : " + (time2 - time1));
     }
     private static String input(){
-        String input_S = "";
-        try{
-            FileReader FR = new FileReader("C://Users//Andy//Desktop//PaperCode//Paper_Program//test.txt");
+        String input_S = oil();
+        /*try{
+            FileReader FR = new FileReader("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//test.txt");
             BufferedReader BR = new BufferedReader(FR);
             while (BR.ready()){
                 input_S = input_S + BR.readLine();
@@ -51,7 +52,7 @@ public class Main {
             FR.close();
         }catch (IOException e){
             e.printStackTrace();
-        }
+        }*/
 
         return input_S;
     }
@@ -59,7 +60,7 @@ public class Main {
         String input_S = "";
         try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//Andy//Desktop//PaperCode//Paper_Program//Data7Y.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//Data7Y.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();

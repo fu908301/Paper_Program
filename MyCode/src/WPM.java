@@ -50,12 +50,12 @@ public class WPM {
             if(!nodeMap.containsKey(inputS.charAt(i))){
                 tempOcc = new ArrayList<>();
                 int put = i + count;
-                System.out.println(inputS.charAt(i) + " " + put);
+                //System.out.println(inputS.charAt(i) + " " + put);
                 tempOcc.add(put);
                 nodeMap.put(inputS.charAt(i), tempOcc);
             } else {
                 int put = i + count;
-                System.out.println(inputS.charAt(i) + " " + put);
+                //System.out.println(inputS.charAt(i) + " " + put);
                 ArrayList<Integer> occ = nodeMap.get(inputS.charAt(i));
                 if(!occ.contains(put)){
                     nodeMap.get(inputS.charAt(i)).add(put);
