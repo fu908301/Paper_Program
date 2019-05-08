@@ -13,7 +13,7 @@ public class WPPM {
         Other_Cal OC = new Other_Cal();
         String input = input();
         String input_S = "";
-        for(int i = 0; i < 1000; i++){   //i = 0 to n
+        for(int i = 0; i < input.length(); i++){   //i = 0 to n
             input_S = input_S + Character.toString(input.charAt(i));
         }
         ArrayList<Character> input_DB = stringToArrayList(input_S);
@@ -192,7 +192,7 @@ public class WPPM {
         String input_S="";
         try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//Data7Y.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//Data11Y.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();
@@ -262,7 +262,7 @@ public class WPPM {
 
     private char change(double input){
         char _return = 'x';
-        if(input >= 10 && input < 20){
+        if(input < 20){
             _return = 'a';
         }
         else if (input >= 20 && input < 30){
@@ -298,7 +298,7 @@ public class WPPM {
         else if(input >= 120 && input < 130){
             _return = 'l';
         }
-        else if(input >= 130 && input < 140){
+        else if(input >= 130){
             _return = 'm';
         }
         return _return;

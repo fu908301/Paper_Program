@@ -12,7 +12,7 @@ public class Main {
         //output();
         String str = input();
         String str1 = "";
-        for(int i = 0; i < 500; i++){   //i = 0 to n
+        for(int i = 0; i < str.length(); i++){   //i = 0 to n
             str1 = str1 + Character.toString(str.charAt(i));
         }
 
@@ -25,9 +25,9 @@ public class Main {
         Mining_Process MP = new Mining_Process(nodes, str1.length());
         MP.print();
 
-        String str2 = "";
-        int count = 499;
-        for(int i = count; i < 1000; i++){   //i = n-1 to m
+        /*String str2 = "";
+        int count = 999;
+        for (int i = count; i < 1300 ; i++) {   //i = n-1 to m
             str2 = str2 + Character.toString(str.charAt(i));
         }
         WPM testWPM2 = new WPM(str2, count, testWPM.getNodeMap()); // count = n-1
@@ -37,6 +37,45 @@ public class Main {
         int length = str1.length() + str2.length() - 1;
         Mining_Process MP2 = new Mining_Process(nodes, length);
         MP2.print();
+
+        String str3 = "";
+        int count2 = 1299;
+        for (int i = count2; i < 1600 ; i++) {   //i = n-1 to m
+            str3 = str3 + Character.toString(str.charAt(i));
+        }
+        WPM testWPM3 = new WPM(str3, count2, testWPM2.getNodeMap()); // count = n-1
+        ArrayList<ArrayList<Occ_Weight>> WPM3 = testWPM3.getWPM();
+        testWDG.setNodeMap(testWPM3.getNodeMap());
+        nodes = testWDG.getincremental(WPM3);
+        int length2 = str1.length() + str2.length()  + str3.length() - 2;
+        Mining_Process MP3 = new Mining_Process(nodes, length2);
+        MP3.print();
+
+        String str4 = "";
+        int count3 = 1599;
+        for (int i = count3; i < 1900 ; i++) {   //i = n-1 to m
+            str4 = str4 + Character.toString(str.charAt(i));
+        }
+        WPM testWPM4 = new WPM(str4, count3, testWPM3.getNodeMap()); // count = n-1
+        ArrayList<ArrayList<Occ_Weight>> WPM4 = testWPM4.getWPM();
+        testWDG.setNodeMap(testWPM4.getNodeMap());
+        nodes = testWDG.getincremental(WPM4);
+        int length3 = str1.length() + str2.length()  + str3.length() + str4.length() - 3;
+        Mining_Process MP4 = new Mining_Process(nodes, length3);
+        MP4.print();
+
+        String str5 = "";
+        int count4 = 1899;
+        for (int i = count4; i < 2200 ; i++) {   //i = n-1 to m
+            str5 = str5 + Character.toString(str.charAt(i));
+        }
+        WPM testWPM5 = new WPM(str5, count4, testWPM4.getNodeMap()); // count = n-1
+        ArrayList<ArrayList<Occ_Weight>> WPM5 = testWPM5.getWPM();
+        testWDG.setNodeMap(testWPM5.getNodeMap());
+        nodes = testWDG.getincremental(WPM5);
+        int length4 = str1.length() + str2.length()  + str3.length() + str4.length() + str5.length() - 4;
+        Mining_Process MP5 = new Mining_Process(nodes, length4);
+        MP5.print();*/
 
         long time2 = System.currentTimeMillis();
         System.out.println("Time : " + (time2 - time1));
@@ -60,7 +99,7 @@ public class Main {
         String input_S = "";
         try{
             char c;
-            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//Data7Y.csv"));
+            InputStreamReader isr = new InputStreamReader(new FileInputStream("C://Users//AndyFu//Desktop//Paper_code//Paper_Program//Data11Y.csv"));
             BufferedReader reader = new BufferedReader(isr);
             String line = null;
             reader.readLine();
@@ -110,7 +149,7 @@ public class Main {
     }
     private static char change(double input){
         char _return = 'x';
-        if(input >= 10 && input < 20){
+        if(input < 20){
             _return = 'a';
         }
         else if (input >= 20 && input < 30){
@@ -146,7 +185,7 @@ public class Main {
         else if(input >= 120 && input < 130){
             _return = 'l';
         }
-        else if(input >= 130 && input < 140){
+        else if(input >= 130){
             _return = 'm';
         }
         return _return;

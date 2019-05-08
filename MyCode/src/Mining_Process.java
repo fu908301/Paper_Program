@@ -223,12 +223,12 @@ public class Mining_Process {
 
     public void print(){
         mining_set();
-        System.out.println("Answer Print");
+        /*System.out.println("Answer Print");
         for(int i = 0; i < answer.size(); i++){
             answer.get(i).print();
         }
         System.out.println("Answer Size : " + answer.size());
-        System.out.println("Answer Print Finished");
+        System.out.println("Answer Print Finished");*/
         System.out.println("Answer Size : " + answer.size());
     }
 }
